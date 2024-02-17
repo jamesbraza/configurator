@@ -1,0 +1,17 @@
+# Linting
+Flake8-pyproject>=1.2  # For added --toml-config arg
+flake8-requirements
+pylint>=3
+refurb>=1.24.0  # For mypy 1.7 unpinning
+
+# Testing
+coverage[toml]
+pytest
+
+# Typing
+mypy>=1.8  # For addition of mutable-override
+typeguard
+
+# Other
+pip-tools>=7.2  # For added --constraint arg
+pre-commit>=3.4
