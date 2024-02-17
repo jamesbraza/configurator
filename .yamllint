@@ -1,0 +1,10 @@
+---
+extends: default
+
+rules:
+    comments:
+        min-spaces-from-content: 1 # Match prettier
+    indentation:
+        spaces: 4 # Match Python PEP 8
+    line-length:
+        max: 97 # Match ruff line-length
