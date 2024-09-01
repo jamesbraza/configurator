@@ -39,8 +39,6 @@ preview = true
 [tool.codespell]
 check-filenames = true
 check-hidden = true
-# SEE: https://github.com/codespell-project/codespell/issues/1212#issuecomment-1744768533
-ignore-regex = ".{1024}|.*codespell-ignore.*"
 ignore-words-list = "astroid,ser"
 
 [tool.coverage]
