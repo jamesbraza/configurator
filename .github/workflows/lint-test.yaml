@@ -1,0 +1,19 @@
+---
+name: Lint and Test
+
+on: # yamllint disable-line rule:truthy
+    pull_request:
+    push:
+        branches: ["main"]
+
+permissions:
+    contents: read
+
+jobs:
+    lint-test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Set up uv
+              run: curl -LsSf https://astral.sh/uv/install.sh | sh
+            - run: uv run pytest -n auto
