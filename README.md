@@ -475,6 +475,26 @@ If invoking `flake8` as part of `pre-commit`,
 run this only in CI because this check isn't relevant for most commits.
 
 </td></tr>
+<tr><td>
+
+[`validate-pyproject`](https://github.com/abravalheri/validate-pyproject)
+
+</td><td>Yes</td><td>
+
+Validating `pyproject.toml` configuration(s)
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+By specifying
+[`validate-pyproject-schema-store`](https://github.com/henryiii/validate-pyproject-schema-store)
+in `additional_dependencies`,
+configurations for `mypy`, `ruff`, `uv`, etc. will also be validated.
+
+</td></tr>
 </table>
 
 ## Git
