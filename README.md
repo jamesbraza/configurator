@@ -86,6 +86,26 @@ Miscellaneous file cleanup like end of file newlines
 When adding rules, try to avoid duplication of other tools like `ruff`.
 
 </td></tr>
+<tr><td>
+
+[`sqlfluff`](https://github.com/sqlfluff/sqlfluff)
+([docs](https://docs.sqlfluff.com/en/stable/))
+
+</td><td>
+
+Yes
+
+</td><td>
+
+Autoformatting SQL
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+</td></tr>
 </table>
 
 ### Linters
