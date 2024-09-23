@@ -2,6 +2,23 @@
 
 Tool with configurations for the creation of better software.
 
+<!--TOC-->
+
+- [Non-Python Tool Integrations](#non-python-tool-integrations)
+  - [Autoformatters](#autoformatters)
+  - [Linters](#linters)
+  - [Markdown](#markdown)
+- [Python Tool Integrations](#python-tool-integrations)
+  - [Autoformatters](#autoformatters-1)
+  - [Linters](#linters-1)
+  - [Type Checking](#type-checking)
+  - [Dependencies](#dependencies)
+  - [Packaging](#packaging)
+- [Git](#git)
+  - [`.gitignore` Creation](#gitignore-creation)
+
+<!--TOC-->
+
 ## Non-Python Tool Integrations
 
 ### Autoformatters
@@ -125,6 +142,29 @@ Yes
 </td><td>
 
 `Dockerfile` following best practices
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td></td></tr>
+</table>
+
+### Markdown
+
+<table>
+<tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
+<tr><td>
+
+[`markdown-toc-creator`](https://github.com/jsh9/markdown-toc-creator)
+
+</td><td>
+
+Yes, `>=0.0.8`
+
+</td><td>
+
+Markdown table of contents
 
 </td><td>
 
