@@ -10,6 +10,7 @@ Tool with configurations for the creation of better software.
   - [Markdown](#markdown)
 - [Python Tool Integrations](#python-tool-integrations)
   - [Autoformatters](#autoformatters-1)
+  - [Testing](#testing)
   - [Linters](#linters-1)
   - [Type Checking](#type-checking)
   - [Dependencies](#dependencies)
@@ -260,6 +261,171 @@ Cleaning Jupyter Notebooks
 
 Paired with `black[jupyter]`,
 this makes PRs with Jupyter Notebooks easier to read.
+
+</td></tr>
+</table>
+
+### Testing
+
+<table>
+<tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
+<tr><td>
+
+[`pytest`](https://github.com/pytest-dev/pytest)
+([docs](https://docs.pytest.org/en/stable/))
+
+</td><td>
+
+Yes
+
+</td><td>
+
+Test runner
+
+</td><td>
+
+Command line
+
+</td><td></td></tr>
+<tr><td>
+
+[`pytest-xdist`](https://github.com/pytest-dev/pytest-xdist)
+([docs](https://pytest-xdist.readthedocs.io/en/stable/))
+
+</td><td>
+
+Yes
+
+</td><td>
+
+Test runner parallelism via multiprocessing
+
+</td><td>
+
+`pytest` plugin
+
+</td><td></td></tr>
+<tr><td>
+
+[`pytest-timer`](https://github.com/skudriashev/pytest-timer)
+
+</td><td>
+
+Yes
+
+</td><td>
+
+Timing tests
+
+</td><td>
+
+`pytest` plugin
+
+</td><td>
+
+Use the `colorama` extra for colored output.
+
+</td></tr>
+<tr><td>
+
+[`pytest-sugar`](https://github.com/Teemu/pytest-sugar)
+
+</td><td>
+
+Yes
+
+</td><td>
+
+User-friendly `pytest` output
+
+</td><td>
+
+`pytest` plugin
+
+</td><td></td></tr>
+<tr><td>
+
+[`pytest-subtests`](https://github.com/pytest-dev/pytest-subtests)
+
+</td><td>
+
+Yes
+
+</td><td>
+
+Supporting subtesting
+
+</td><td>
+
+`pytest` plugin
+
+</td><td>
+
+Will be deprecated after
+[pytest-dev/pytests-subtests#71](https://github.com/pytest-dev/pytest-subtests/issues/71).
+
+</td></tr>
+<tr><td>
+
+[`pytest-rerunfailures`](https://github.com/pytest-dev/pytest-rerunfailures)
+
+</td><td>
+
+No
+
+</td><td>
+
+Easy decorator `pytest.mark.flaky` for flaky tests
+
+</td><td>
+
+`pytest` plugin
+
+</td><td>
+
+A third party alternative is [`flaky`](https://github.com/box/flaky).
+
+</td></tr>
+<tr><td>
+
+[`pytest-timeout`](https://github.com/pytest-dev/pytest-timeout)
+
+</td><td>
+
+No
+
+</td><td>
+
+Terminate long-running tests
+
+</td><td>
+
+`pytest` plugin
+
+</td><td>
+
+Useful when there's unsolved race conditions.
+
+</td></tr>
+<tr><td>
+
+[`pytest-recording`](https://github.com/kiwicom/pytest-recording)
+
+</td><td>
+
+No
+
+</td><td>
+
+Cache HTTP requests as cassettes
+
+</td><td>
+
+`pytest` plugin
+
+</td><td>
+
+Maintained successor to [`pytest-vcr`](https://github.com/ktosiek/pytest-vcr).
 
 </td></tr>
 </table>
