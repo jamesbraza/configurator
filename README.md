@@ -417,7 +417,7 @@ Equivalent of `ruff --add-noqa`, but for `mypy`.
 </td></tr>
 </table>
 
-### Requirements
+### Dependencies
 
 <table>
 <tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
@@ -431,7 +431,7 @@ Yes, `>=0.3.0`
 
 </td><td>
 
-Requirements compilation
+Python environment and dependency management
 
 </td><td>
 
@@ -477,7 +477,31 @@ run this only in CI because this check isn't relevant for most commits.
 </td></tr>
 <tr><td>
 
+[`pipdeptree`](https://github.com/tox-dev/pipdeptree)
+
+</td><td>No</td><td>
+
+Auditing requirements
+
+</td><td>
+
+Command line
+
+</td><td>
+
+Alternative to `uv tree`.
+
+</td></tr>
+</table>
+
+### Packaging
+
+<table>
+<tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
+<tr><td>
+
 [`validate-pyproject`](https://github.com/abravalheri/validate-pyproject)
+([docs](https://validate-pyproject.readthedocs.io/en/latest/))
 
 </td><td>Yes</td><td>
 
@@ -497,21 +521,18 @@ configurations for `mypy`, `ruff`, `uv`, etc. will also be validated.
 </td></tr>
 <tr><td>
 
-[`pipdeptree`](https://github.com/tox-dev/pipdeptree)
+[`ini2toml`](https://github.com/abravalheri/ini2toml)
+([docs](https://ini2toml.readthedocs.io/en/latest/))
 
 </td><td>No</td><td>
 
-Auditing requirements
+Migration from `setup.cfg`/`ini` to `pyproject.toml`
 
 </td><td>
 
 Command line
 
-</td><td>
-
-Alternative to `uv tree`.
-
-</td></tr>
+</td><td></td></tr>
 </table>
 
 ## Git
