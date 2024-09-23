@@ -156,6 +156,9 @@ module = [
     "jsonschema.*",
     "litellm",  # SEE: https://github.com/BerriAI/litellm/issues/825
     "networkx",  # SEE: https://github.com/networkx/networkx/issues/3988
+    "pybtex.*",  # SEE: https://bitbucket.org/pybtex-devs/pybtex/issues/141/type-annotations
+    "pymupdf",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/3361
+    "pyzotero",  # SEE: https://github.com/urschrei/pyzotero/issues/110
     "s3fs",  # SEE: https://github.com/fsspec/s3fs/issues/383
     "setuptools_scm",  # SEE: https://github.com/pypa/setuptools_scm/issues/501
     "socketio.*",  # SEE: https://github.com/miguelgrinberg/python-socketio/issues/1276
