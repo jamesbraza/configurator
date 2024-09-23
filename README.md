@@ -464,6 +464,7 @@ Equivalent of `ruff --add-noqa`, but for `mypy`.
 <tr><td>
 
 [`uv`](https://github.com/astral-sh/uv)
+([docs](https://docs.astral.sh/uv/))
 
 </td><td>
 
