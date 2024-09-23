@@ -495,6 +495,23 @@ in `additional_dependencies`,
 configurations for `mypy`, `ruff`, `uv`, etc. will also be validated.
 
 </td></tr>
+<tr><td>
+
+[`pipdeptree`](https://github.com/tox-dev/pipdeptree)
+
+</td><td>No</td><td>
+
+Auditing requirements
+
+</td><td>
+
+Command line
+
+</td><td>
+
+Alternative to `uv tree`.
+
+</td></tr>
 </table>
 
 ## Git
