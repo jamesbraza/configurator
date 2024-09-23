@@ -2,6 +2,23 @@
 
 Tool with configurations for the creation of better software.
 
+<!--TOC-->
+
+- [Non-Python Tool Integrations](#non-python-tool-integrations)
+  - [Autoformatters](#autoformatters)
+  - [Linters](#linters)
+  - [Markdown](#markdown)
+- [Python Tool Integrations](#python-tool-integrations)
+  - [Autoformatters](#autoformatters-1)
+  - [Linters](#linters-1)
+  - [Type Checking](#type-checking)
+  - [Dependencies](#dependencies)
+  - [Packaging](#packaging)
+- [Git](#git)
+  - [`.gitignore` Creation](#gitignore-creation)
+
+<!--TOC-->
+
 ## Non-Python Tool Integrations
 
 ### Autoformatters
@@ -69,6 +86,26 @@ Miscellaneous file cleanup like end of file newlines
 When adding rules, try to avoid duplication of other tools like `ruff`.
 
 </td></tr>
+<tr><td>
+
+[`sqlfluff`](https://github.com/sqlfluff/sqlfluff)
+([docs](https://docs.sqlfluff.com/en/stable/))
+
+</td><td>
+
+Yes
+
+</td><td>
+
+Autoformatting SQL
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+</td></tr>
 </table>
 
 ### Linters
@@ -125,6 +162,29 @@ Yes
 </td><td>
 
 `Dockerfile` following best practices
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td></td></tr>
+</table>
+
+### Markdown
+
+<table>
+<tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
+<tr><td>
+
+[`markdown-toc-creator`](https://github.com/jsh9/markdown-toc-creator)
+
+</td><td>
+
+Yes, `>=0.0.8`
+
+</td><td>
+
+Markdown table of contents
 
 </td><td>
 
@@ -417,13 +477,14 @@ Equivalent of `ruff --add-noqa`, but for `mypy`.
 </td></tr>
 </table>
 
-### Requirements
+### Dependencies
 
 <table>
 <tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
 <tr><td>
 
 [`uv`](https://github.com/astral-sh/uv)
+([docs](https://docs.astral.sh/uv/))
 
 </td><td>
 
@@ -431,7 +492,7 @@ Yes, `>=0.3.0`
 
 </td><td>
 
-Requirements compilation
+Python environment and dependency management
 
 </td><td>
 
@@ -477,7 +538,31 @@ run this only in CI because this check isn't relevant for most commits.
 </td></tr>
 <tr><td>
 
+[`pipdeptree`](https://github.com/tox-dev/pipdeptree)
+
+</td><td>No</td><td>
+
+Auditing requirements
+
+</td><td>
+
+Command line
+
+</td><td>
+
+Alternative to `uv tree`.
+
+</td></tr>
+</table>
+
+### Packaging
+
+<table>
+<tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
+<tr><td>
+
 [`validate-pyproject`](https://github.com/abravalheri/validate-pyproject)
+([docs](https://validate-pyproject.readthedocs.io/en/latest/))
 
 </td><td>Yes</td><td>
 
@@ -495,6 +580,20 @@ in `additional_dependencies`,
 configurations for `mypy`, `ruff`, `uv`, etc. will also be validated.
 
 </td></tr>
+<tr><td>
+
+[`ini2toml`](https://github.com/abravalheri/ini2toml)
+([docs](https://ini2toml.readthedocs.io/en/latest/))
+
+</td><td>No</td><td>
+
+Migration from `setup.cfg`/`ini` to `pyproject.toml`
+
+</td><td>
+
+Command line
+
+</td><td></td></tr>
 </table>
 
 ## Git

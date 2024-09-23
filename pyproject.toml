@@ -369,6 +369,9 @@ max-doc-length = 97  # Match line-length
 # defaults when analyzing docstring sections.
 convention = "google"
 
+[tool.sqlfluff.core]
+max_line_length = 88  # Match black
+
 [tool.tomlsort]
 all = true
 in_place = true
