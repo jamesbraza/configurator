@@ -748,6 +748,36 @@ configurations for `mypy`, `ruff`, `uv`, etc. will also be validated.
 </td></tr>
 <tr><td>
 
+[`check-sdist`](https://github.com/henryiii/check-sdist)
+
+</td><td>Yes</td><td>
+
+Checking SDist build
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+Unclear if this tool is a subset of `build-and-inspect-python-package` below.
+
+</td></tr>
+<tr><td>
+
+[`build-and-inspect-python-package`](https://github.com/hynek/build-and-inspect-python-package)
+
+</td><td>No</td><td>
+
+Checking SDist, wheel, and README.
+
+</td><td>
+
+GitHub Actions
+
+</td><td></td></tr>
+<tr><td>
+
 [`ini2toml`](https://github.com/abravalheri/ini2toml)
 ([docs](https://ini2toml.readthedocs.io/en/latest/))
 
