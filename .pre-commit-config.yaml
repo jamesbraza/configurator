@@ -64,6 +64,10 @@ repos:
     rev: 3.0.0
     hooks:
       - id: check-mailmap
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 38.120.1
+    hooks:
+      - id: renovate-config-validator
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: v0.20.2
     hooks:

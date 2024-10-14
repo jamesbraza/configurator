@@ -15,7 +15,8 @@ Tool with configurations for the creation of better software.
   - [Type Checking](#type-checking)
   - [Dependencies](#dependencies)
   - [Packaging](#packaging)
-- [Git](#git)
+- [Helper Scripts](#helper-scripts)
+  - [Changing Repos](#changing-repos)
   - [`.gitignore` Creation](#gitignore-creation)
 
 <!--TOC-->
@@ -649,6 +650,26 @@ Equivalent of `ruff --add-noqa`, but for `mypy`.
 <tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
 <tr><td>
 
+[Renovate](https://github.com/renovatebot/renovate)
+([docs](https://docs.renovatebot.com/))
+
+</td><td>Yes</td><td>
+
+Automated dependency updates
+
+</td><td>
+
+GitHub Actions
+
+</td><td>
+
+Pair with `renovate-config-validator`, run via its `pre-commit` hook
+from https://github.com/renovatebot/pre-commit-hooks,
+to validate the configuration file.
+
+</td></tr>
+<tr><td>
+
 [`uv`](https://github.com/astral-sh/uv)
 ([docs](https://docs.astral.sh/uv/))
 
@@ -792,7 +813,39 @@ Command line
 </td><td></td></tr>
 </table>
 
-## Git
+## Helper Scripts
+
+### Changing Repos
+
+```shell
+a() {
+    : Activate : Clone repository if needed, change to directory, and activating Python and Node.js environments
+    repo=${1:-.}
+    if [[ $repo != . ]]; then
+        directory=$repo  # No renames currently in progress
+        [[ -d $HOME/code/$directory ]] || git clone "git@github.com:Synthego/$repo.git" "$HOME/code/$directory";
+        cd "$HOME/code/$directory" || return
+    fi
+
+    if [[ -n $PYENV_VIRTUAL_ENV ]]; then
+        # shellcheck disable=SC1091
+        . deactivate
+    elif [[ -n $VIRTUAL_ENV ]]; then
+        deactivate
+    fi
+    local venv=none
+    if [[ -f .venv/bin/activate ]]; then
+        venv=.venv
+    elif [[ -f venv/bin/activate ]]; then
+        venv=venv
+    fi
+    if [[ $venv != none ]]; then
+        # shellcheck disable=SC1090,SC1091
+        . $venv/bin/activate
+        (python --version; type python | sed -E "s,^[^/]*(/.+)\),\1,") | xargs echo
+    fi
+}
+```
 
 ### `.gitignore` Creation
 
