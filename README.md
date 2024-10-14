@@ -758,6 +758,23 @@ Checking SDist build
 
 `pre-commit` hook
 
+</td><td>
+
+Unclear if this tool is a subset of `build-and-inspect-python-package` below.
+
+</td></tr>
+<tr><td>
+
+[`build-and-inspect-python-package`](https://github.com/hynek/build-and-inspect-python-package)
+
+</td><td>No</td><td>
+
+Checking SDist, wheel, and README.
+
+</td><td>
+
+GitHub Actions
+
 </td><td></td></tr>
 <tr><td>
 
