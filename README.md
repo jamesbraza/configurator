@@ -650,6 +650,26 @@ Equivalent of `ruff --add-noqa`, but for `mypy`.
 <tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
 <tr><td>
 
+[Renovate](https://github.com/renovatebot/renovate)
+([docs](https://docs.renovatebot.com/))
+
+</td><td>Yes</td><td>
+
+Automated dependency updates
+
+</td><td>
+
+GitHub Actions
+
+</td><td>
+
+Pair with `renovate-config-validator`, run via its `pre-commit` hook
+from https://github.com/renovatebot/pre-commit-hooks,
+to validate the configuration file.
+
+</td></tr>
+<tr><td>
+
 [`uv`](https://github.com/astral-sh/uv)
 ([docs](https://docs.astral.sh/uv/))
 
