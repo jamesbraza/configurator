@@ -70,6 +70,12 @@ repos:
       - id: validate-pyproject
         additional_dependencies:
           - validate-pyproject-schema-store[all]
+  - repo: https://github.com/henryiii/check-sdist
+    rev: v1.1.0
+    hooks:
+      - id: check-sdist
+        args: [--inject-junk]
+        additional_dependencies: [setuptools>=64, setuptools_scm>=8]
   - repo: https://github.com/jsh9/markdown-toc-creator
     rev: 0.0.8
     hooks:
