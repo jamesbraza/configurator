@@ -108,6 +108,26 @@ Autoformatting SQL
 </td><td>
 
 </td></tr>
+<tr><td>
+
+[`djlint`](https://github.com/djlint/djlint)
+([docs](https://www.djlint.com/))
+
+</td><td>
+
+No
+
+</td><td>
+
+Autoformatting templates like Jinja, Nunjucks, etc.
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+</td></tr>
 </table>
 
 ### Linters
