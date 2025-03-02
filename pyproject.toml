@@ -163,30 +163,39 @@ ignore_missing_imports = true
 module = [
     "PIL",
     "accelerate.*",  # SEE: https://github.com/huggingface/accelerate/issues/2396
+    "aiohttp_client_cache.*",
     "cloudpickle",  # SEE: https://github.com/cloudpipe/cloudpickle/issues/541
     "colabfold.*",
     "datasets",  # SEE: https://github.com/huggingface/datasets/issues/3841
+    "deepspeed.*",  # SEE: https://github.com/microsoft/DeepSpeed/issues/6988
     "dicttoxml",  # SEE: https://github.com/quandyfactory/dicttoxml/issues/106
     "dill",
+    "doc2json.*",  # SEE: https://github.com/allenai/s2orc-doc2json/issues/36
     "docker",  # SEE: https://github.com/docker/docker-py/issues/2796
     "factory",  # SEE: https://github.com/FactoryBoy/factory_boy/issues/468
     "fastapi_socketio",  # SEE: https://github.com/pyropy/fastapi-socketio/issues/27
+    "fitz",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/3361
     "fsspec",  # SEE: https://github.com/fsspec/filesystem_spec/issues/625
+    "google.*",  # SEE: https://github.com/googleapis/python-genai/issues/61
     "google.cloud.storage",  # SEE: https://github.com/googleapis/python-storage/issues/393
     "google_crc32c",  # SEE: https://github.com/googleapis/python-crc32c/pull/211
+    "grobid_client.*",  # SEE: https://github.com/kermitt2/grobid_client_python/issues/71
     "huggingface_hub.*",  # SEE: https://github.com/huggingface/huggingface_hub/issues/1662
     "jsonschema.*",
     "litellm",  # SEE: https://github.com/BerriAI/litellm/issues/825
     "networkx",  # SEE: https://github.com/networkx/networkx/issues/3988
-    "openreview",
+    "openreview",  # SEE: https://github.com/openreview/openreview-py/issues/2551
+    "plotly.*",  # SEE: https://github.com/plotly/plotly.py/issues/4927
     "pybtex.*",  # SEE: https://bitbucket.org/pybtex-devs/pybtex/issues/141/type-annotations
     "pymupdf",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/2883
     "pyzotero",  # SEE: https://github.com/urschrei/pyzotero/issues/110
     "s3fs",  # SEE: https://github.com/fsspec/s3fs/issues/383
+    "sendgrid.*",
     "setuptools_scm",  # SEE: https://github.com/pypa/setuptools_scm/issues/501
     "socketio.*",  # SEE: https://github.com/miguelgrinberg/python-socketio/issues/1276
     "sweagent.*",
     "swebench.*",
+    "thefuzz",  # SEE: https://github.com/seatgeek/thefuzz/issues/72
     "tokenizers",
     "transformers.*",  # SEE: https://github.com/huggingface/transformers/pull/18485
     "tree",  # SEE: https://github.com/google-deepmind/tree/issues/84
