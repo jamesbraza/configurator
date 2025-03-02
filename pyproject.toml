@@ -213,11 +213,13 @@ jobs = 0
 disable = [
     "bare-except",  # Rely on ruff E722 for this
     "broad-exception-raised",  # Rely on ruff TRY002 for this
+    "dangerous-default-value",  # Rely on ruff W0102 for this
     "empty-docstring",  # Let pep257 take care of docstrings
     "expression-not-assigned",  # Rely on mypy func-returns-value for this
     "fixme",  # codetags are useful
     "function-redefined",  # Rely on mypy no-redef for this
     "import-outside-toplevel",  # Rely on ruff PLC0415 for this
+    "keyword-arg-before-vararg",  # Rely on ruff B026 for this
     "line-too-long",  # Rely on ruff E501 for this
     "logging-fstring-interpolation",  # f-strings are convenient
     "logging-too-many-args",  # Rely on ruff PLE1205 for this
@@ -225,6 +227,7 @@ disable = [
     "missing-final-newline",  # Rely on ruff W292 for this
     "no-else-return",  # Rely on ruff RET506 for this
     "no-member",  # Buggy, SEE: https://github.com/pylint-dev/pylint/issues/8138
+    "no-value-for-parameter",  # Rely on mypy call-arg for this
     "protected-access",  # Don't care to enforce this in testing
     "raise-missing-from",  # Rely on ruff B904 for this
     "redefined-builtin",  # Rely on ruff A002 for this
@@ -232,11 +235,13 @@ disable = [
     "too-many-arguments",  # Don't care to enforce this
     "too-many-branches",  # Rely on ruff PLR0912 for this
     "too-many-locals",  # Rely on ruff PLR0914 for this
+    "too-many-public-methods",  # Rely on ruff PLR0904 for this
     "too-many-return-statements",  # Rely on ruff PLR0911 for this
     "too-many-statements",  # Rely on ruff PLR0915 for this
     "ungrouped-imports",  # Rely on ruff I001 for this
     "unidiomatic-typecheck",  # Rely on ruff E721 for this
     "unreachable",  # Rely on mypy unreachable for this
+    "unspecified-encoding",  # Rely on ruff PLW1514 for this
     "unsubscriptable-object",  # Buggy, SEE: https://github.com/pylint-dev/pylint/issues/3637
     "unsupported-membership-test",  # Buggy, SEE: https://github.com/pylint-dev/pylint/issues/3045
     "unused-argument",  # Rely on ruff ARG002 for this
