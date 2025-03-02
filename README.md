@@ -108,6 +108,26 @@ Autoformatting SQL
 </td><td>
 
 </td></tr>
+<tr><td>
+
+[`djlint`](https://github.com/djlint/djlint)
+([docs](https://www.djlint.com/))
+
+</td><td>
+
+No
+
+</td><td>
+
+Autoformatting templates like Jinja, Nunjucks, etc.
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+</td></tr>
 </table>
 
 ### Linters
@@ -751,7 +771,7 @@ Alternative to `uv tree`.
 [`validate-pyproject`](https://github.com/abravalheri/validate-pyproject)
 ([docs](https://validate-pyproject.readthedocs.io/en/latest/))
 
-</td><td>Yes</td><td>
+</td><td>No</td><td>
 
 Validating `pyproject.toml` configuration(s)
 
@@ -765,6 +785,29 @@ By specifying
 [`validate-pyproject-schema-store`](https://github.com/henryiii/validate-pyproject-schema-store)
 in `additional_dependencies`,
 configurations for `mypy`, `ruff`, `uv`, etc. will also be validated.
+
+See Notes for `validate-pyproject-schema-store` below.
+
+</td></tr>
+<tr><td>
+
+[`validate-pyproject-schema-store`](https://github.com/henryiii/validate-pyproject-schema-store)
+
+</td><td>Yes</td><td>
+
+Validating tool-specific `pyproject.toml` configuration(s)
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+This tool's versions change frequently because it tracks upstream tools' schemae.
+It also depends on `validate-pyproject`,
+so to avoid frequently updating the
+min version in `validate-pyproject`'s `additional_dependencies`,
+use this as the `pre-commit` hook.
 
 </td></tr>
 <tr><td>

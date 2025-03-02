@@ -3,6 +3,9 @@ build-backend = "setuptools.build_meta"
 # SEE: https://github.com/pypa/setuptools_scm#pyprojecttoml-usage
 requires = ["setuptools>=64", "setuptools_scm>=8"]
 
+[dependency-groups]
+dev = ["configurator[dev]"]
+
 [project]
 authors = [
     {name = "James Braza"},
@@ -25,6 +28,24 @@ license = {file = "LICENSE"}
 name = "configurator"
 readme = "README.md"
 requires-python = ">=3.11"
+
+[project.optional-dependencies]
+dev = [
+    "Flake8-pyproject>=1.2",  # For added --toml-config arg
+    "coverage[toml]",
+    "flake8-requirements",
+    "ipython>=8",  # Pin to keep recent
+    "mypy>=1.8",  # For addition of mutable-override
+    "pre-commit>=3.4",
+    "pylint>=3",
+    "pytest",
+    "pytest-subtests",
+    "pytest-sugar",
+    "pytest-timer[colorama]",
+    "pytest-xdist",
+    "refurb>=2",
+    "typeguard",
+]
 
 [project.urls]
 issues = "https://github.com/jamesbraza/configurator/issues"
@@ -142,6 +163,7 @@ ignore_missing_imports = true
 module = [
     "PIL",
     "accelerate.*",  # SEE: https://github.com/huggingface/accelerate/issues/2396
+    "cloudpickle",  # SEE: https://github.com/cloudpipe/cloudpickle/issues/541
     "colabfold.*",
     "datasets",  # SEE: https://github.com/huggingface/datasets/issues/3841
     "dicttoxml",  # SEE: https://github.com/quandyfactory/dicttoxml/issues/106
@@ -156,8 +178,9 @@ module = [
     "jsonschema.*",
     "litellm",  # SEE: https://github.com/BerriAI/litellm/issues/825
     "networkx",  # SEE: https://github.com/networkx/networkx/issues/3988
+    "openreview",
     "pybtex.*",  # SEE: https://bitbucket.org/pybtex-devs/pybtex/issues/141/type-annotations
-    "pymupdf",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/3361
+    "pymupdf",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/2883
     "pyzotero",  # SEE: https://github.com/urschrei/pyzotero/issues/110
     "s3fs",  # SEE: https://github.com/fsspec/s3fs/issues/383
     "setuptools_scm",  # SEE: https://github.com/pypa/setuptools_scm/issues/501
@@ -166,9 +189,10 @@ module = [
     "swebench.*",
     "tokenizers",
     "transformers.*",  # SEE: https://github.com/huggingface/transformers/pull/18485
+    "tree",  # SEE: https://github.com/google-deepmind/tree/issues/84
     "trl.*",
     "unsloth",
-    "vcr",  # SEE: https://github.com/kevin1024/vcrpy/issues/780
+    "vcr.*",  # SEE: https://github.com/kevin1024/vcrpy/issues/780
 ]
 
 [tool.pylint]
@@ -192,11 +216,13 @@ jobs = 0
 disable = [
     "bare-except",  # Rely on ruff E722 for this
     "broad-exception-raised",  # Rely on ruff TRY002 for this
+    "dangerous-default-value",  # Rely on ruff W0102 for this
     "empty-docstring",  # Let pep257 take care of docstrings
     "expression-not-assigned",  # Rely on mypy func-returns-value for this
     "fixme",  # codetags are useful
     "function-redefined",  # Rely on mypy no-redef for this
     "import-outside-toplevel",  # Rely on ruff PLC0415 for this
+    "keyword-arg-before-vararg",  # Rely on ruff B026 for this
     "line-too-long",  # Rely on ruff E501 for this
     "logging-fstring-interpolation",  # f-strings are convenient
     "logging-too-many-args",  # Rely on ruff PLE1205 for this
@@ -204,6 +230,7 @@ disable = [
     "missing-final-newline",  # Rely on ruff W292 for this
     "no-else-return",  # Rely on ruff RET506 for this
     "no-member",  # Buggy, SEE: https://github.com/pylint-dev/pylint/issues/8138
+    "no-value-for-parameter",  # Rely on mypy call-arg for this
     "protected-access",  # Don't care to enforce this in testing
     "raise-missing-from",  # Rely on ruff B904 for this
     "redefined-builtin",  # Rely on ruff A002 for this
@@ -211,11 +238,13 @@ disable = [
     "too-many-arguments",  # Don't care to enforce this
     "too-many-branches",  # Rely on ruff PLR0912 for this
     "too-many-locals",  # Rely on ruff PLR0914 for this
+    "too-many-public-methods",  # Rely on ruff PLR0904 for this
     "too-many-return-statements",  # Rely on ruff PLR0911 for this
     "too-many-statements",  # Rely on ruff PLR0915 for this
     "ungrouped-imports",  # Rely on ruff I001 for this
     "unidiomatic-typecheck",  # Rely on ruff E721 for this
     "unreachable",  # Rely on mypy unreachable for this
+    "unspecified-encoding",  # Rely on ruff PLW1514 for this
     "unsubscriptable-object",  # Buggy, SEE: https://github.com/pylint-dev/pylint/issues/3637
     "unsupported-membership-test",  # Buggy, SEE: https://github.com/pylint-dev/pylint/issues/3045
     "unused-argument",  # Rely on ruff ARG002 for this
@@ -247,14 +276,14 @@ addopts = "--typeguard-packages=configurator --doctest-modules"
 [tool.refurb]
 enable_all = true
 ignore = [
-    "FURB101",  # FURB101, FURB103, FURB141, FURB144, FURB146, FURB147, FURB150, FURB155: no need for pathlib
-    "FURB103",
-    "FURB141",
-    "FURB144",
-    "FURB146",
-    "FURB147",
-    "FURB150",
-    "FURB155",
+    "FURB101",  # Rely on ruff FURB101 for this
+    "FURB103",  # Rely on ruff FURB103 for this
+    "FURB141",  # Rely on ruff PTH110 for this
+    "FURB144",  # Rely on ruff PTH107 for this
+    "FURB146",  # Rely on ruff PTH113 for this
+    "FURB147",  # Rely on ruff PTH118 for this
+    "FURB150",  # Rely on ruff PTH102 for this
+    "FURB155",  # Rely on ruff PTH202 for this
 ]
 
 [tool.ruff]
@@ -272,13 +301,72 @@ preview = true
 [tool.ruff.lint]
 explicit-preview-rules = true
 extend-select = [
+    "AIR301",
+    "AIR302",
+    "AIR303",
+    "ASYNC116",
+    "B901",
+    "B903",
+    "B909",
+    "B911",
     "C420",
+    "CPY001",
+    "DOC201",
     "DOC202",
+    "DOC402",
     "DOC403",
+    "DOC501",
+    "DOC502",
+    "DTZ901",
+    "E111",
+    "E112",
+    "E113",
+    "E114",
+    "E115",
+    "E116",
+    "E117",
+    "E201",
+    "E202",
+    "E203",
+    "E204",
+    "E211",
+    "E221",
+    "E222",
+    "E223",
+    "E224",
+    "E225",
+    "E226",
+    "E227",
+    "E228",
+    "E231",
+    "E241",
+    "E242",
+    "E251",
+    "E252",
+    "E261",
+    "E262",
+    "E265",
+    "E266",
+    "E271",
+    "E272",
+    "E273",
+    "E274",
+    "E275",
+    "E301",
+    "E302",
+    "E303",
+    "E304",
+    "E305",
+    "E306",
+    "E502",
+    "FAST003",
+    "FURB101",
+    "FURB103",
     "FURB110",
     "FURB113",
     "FURB116",
     "FURB118",
+    "FURB122",
     "FURB131",
     "FURB132",
     "FURB140",
@@ -287,16 +375,88 @@ extend-select = [
     "FURB148",
     "FURB152",
     "FURB154",
+    "FURB156",
     "FURB157",
+    "FURB162",
     "FURB164",
     "FURB166",
     "FURB171",
     "FURB180",
+    "FURB189",
     "FURB192",
+    "LOG004",
+    "LOG014",
+    "LOG015",
+    "PLC0415",
+    "PLC1802",
+    "PLC1901",
+    "PLC2701",
+    "PLC2801",
+    "PLE0304",
+    "PLE1141",
+    "PLE4703",
+    "PLR0202",
+    "PLR0203",
+    "PLR0904",
+    "PLR0914",
+    "PLR0916",
+    "PLR0917",
+    "PLR1702",
+    "PLR1733",
     "PLR6104",
     "PLR6201",
+    "PLR6301",
     "PLW0108",
-    "RUF022",
+    "PLW0177",
+    "PLW0244",
+    "PLW1507",
+    "PLW1514",
+    "PLW1641",
+    "PLW3201",
+    "PT028",
+    "PT029",
+    "PT030",
+    "PT031",
+    "PTH208",
+    "PTH210",
+    "PYI059",
+    "PYI061",
+    "RUF027",
+    "RUF028",
+    "RUF029",
+    "RUF031",
+    "RUF035",
+    "RUF036",
+    "RUF037",
+    "RUF038",
+    "RUF039",
+    "RUF040",
+    "RUF041",
+    "RUF043",
+    "RUF045",
+    "RUF046",
+    "RUF047",
+    "RUF048",
+    "RUF049",
+    "RUF051",
+    "RUF052",
+    "RUF053",
+    "RUF054",
+    "RUF055",
+    "RUF056",
+    "RUF057",
+    "RUF058",
+    "SIM905",
+    "TC006",
+    "TC007",
+    "TC008",
+    "UP042",
+    "UP044",
+    "UP045",
+    "UP046",
+    "UP047",
+    "UP049",
+    "W391",
 ]
 external = [
     "DOC501",  # pydoclint
@@ -306,6 +466,7 @@ ignore = [
     "ANN",  # Don't care to enforce typing
     "BLE001",  # Don't care to enforce blind exception catching
     "COM812",  # Trailing comma with black leads to wasting lines
+    "CPY001",  # Don't care to require copyright notices in every file
     "D100",  # D100, D101, D102, D103, D104, D105, D106, D107: don't always need docstrings
     "D101",
     "D102",
@@ -320,6 +481,8 @@ ignore = [
     "D406",  # Google style requires ":" at end
     "D407",  # We aren't using numpy style
     "D413",  # Blank line after last section. -> No blank line
+    "DOC201",  # Don't care to require Returns in docstrings
+    "DOC402",  # Don't care to require Yields in docstrings
     "DTZ",  # Don't care to have timezone safety
     "EM",  # Overly pedantic
     "FBT001",  # FBT001, FBT002: overly pedantic
@@ -331,9 +494,9 @@ ignore = [
     "PTH",  # Overly pedantic
     "SLF001",  # Overly pedantic
     "T201",  # Overly pedantic
-    "TCH001",  # TCH001, TCH002, TCH003: don't care to enforce type checking blocks
-    "TCH002",
-    "TCH003",
+    "TC001",  # TC001, TC002, TC003: don't care to enforce type checking blocks
+    "TC002",
+    "TC003",
     "TD002",  # Don't care for TODO author
     "TD003",  # Don't care for TODO links
     "TRY003",  # Overly pedantic
@@ -346,7 +509,7 @@ unfixable = [
     "ERA001",  # While debugging, temporarily commenting code can be useful
     "F401",  # While debugging, unused imports can be useful
     "F841",  # While debugging, unused locals can be useful
-    "TCH004",  # While debugging, it can be nice to keep TYPE_CHECKING in-tact
+    "TC004",  # While debugging, it can be nice to keep TYPE_CHECKING in-tact
 ]
 
 [tool.ruff.lint.flake8-annotations]
@@ -356,6 +519,7 @@ mypy-init-return = true
 "**/tests/*.py" = [
     "N802",  # Tests function names can match class names
     "PLR2004",  # Tests can have magic values
+    "PLR6301",  # Test classes can ignore self
     "S101",  # Tests can have assertions
 ]
 
@@ -378,21 +542,3 @@ in_place = true
 spaces_before_inline_comment = 2  # Match Python PEP 8
 spaces_indent_inline_array = 4  # Match Python PEP 8
 trailing_comma_inline_array = true
-
-[tool.uv]
-dev-dependencies = [
-    "Flake8-pyproject>=1.2",  # For added --toml-config arg
-    "coverage[toml]",
-    "flake8-requirements",
-    "ipython>=8",  # Pin to keep recent
-    "mypy>=1.8",  # For addition of mutable-override
-    "pre-commit>=3.4",
-    "pylint>=3",
-    "pytest",
-    "pytest-subtests",
-    "pytest-sugar",
-    "pytest-timer[colorama]",
-    "pytest-xdist",
-    "refurb>=2",
-    "typeguard",
-]
