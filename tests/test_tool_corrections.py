@@ -15,7 +15,7 @@ def get_git_changes(include_untracked: bool = True) -> list[str]:
         args.append("--untracked-files=no")
     gst: str = subprocess.check_output(args).decode().strip(os.linesep)  # noqa: S603
     # Since non-default string.split() returns [""]
-    return gst.split(os.linesep) if gst != "" else []
+    return gst.split(os.linesep) if gst else []
 
 
 REPO_ROOT = TESTS_DIR.parent
