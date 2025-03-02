@@ -68,12 +68,10 @@ repos:
     rev: 39.182.3
     hooks:
       - id: renovate-config-validator
-  - repo: https://github.com/abravalheri/validate-pyproject
-    rev: v0.23
+  - repo: https://github.com/henryiii/validate-pyproject-schema-store
+    rev: 2025.02.24
     hooks:
       - id: validate-pyproject
-        additional_dependencies:
-          - validate-pyproject-schema-store[all]
   - repo: https://github.com/henryiii/check-sdist
     rev: v1.2.0
     hooks:
