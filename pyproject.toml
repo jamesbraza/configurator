@@ -163,6 +163,7 @@ ignore_missing_imports = true
 module = [
     "PIL",
     "accelerate.*",  # SEE: https://github.com/huggingface/accelerate/issues/2396
+    "cloudpickle",  # SEE: https://github.com/cloudpipe/cloudpickle/issues/541
     "colabfold.*",
     "datasets",  # SEE: https://github.com/huggingface/datasets/issues/3841
     "dicttoxml",  # SEE: https://github.com/quandyfactory/dicttoxml/issues/106
@@ -177,8 +178,9 @@ module = [
     "jsonschema.*",
     "litellm",  # SEE: https://github.com/BerriAI/litellm/issues/825
     "networkx",  # SEE: https://github.com/networkx/networkx/issues/3988
+    "openreview",
     "pybtex.*",  # SEE: https://bitbucket.org/pybtex-devs/pybtex/issues/141/type-annotations
-    "pymupdf",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/3361
+    "pymupdf",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/2883
     "pyzotero",  # SEE: https://github.com/urschrei/pyzotero/issues/110
     "s3fs",  # SEE: https://github.com/fsspec/s3fs/issues/383
     "setuptools_scm",  # SEE: https://github.com/pypa/setuptools_scm/issues/501
@@ -187,9 +189,10 @@ module = [
     "swebench.*",
     "tokenizers",
     "transformers.*",  # SEE: https://github.com/huggingface/transformers/pull/18485
+    "tree",  # SEE: https://github.com/google-deepmind/tree/issues/84
     "trl.*",
     "unsloth",
-    "vcr",  # SEE: https://github.com/kevin1024/vcrpy/issues/780
+    "vcr.*",  # SEE: https://github.com/kevin1024/vcrpy/issues/780
 ]
 
 [tool.pylint]
