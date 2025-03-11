@@ -301,9 +301,9 @@ preview = true
 [tool.ruff.lint]
 explicit-preview-rules = true
 extend-select = [
+    "AIR002",
     "AIR301",
     "AIR302",
-    "AIR303",
     "ASYNC116",
     "B901",
     "B903",
@@ -425,7 +425,6 @@ extend-select = [
     "RUF028",
     "RUF029",
     "RUF031",
-    "RUF035",
     "RUF036",
     "RUF037",
     "RUF038",
@@ -446,6 +445,7 @@ extend-select = [
     "RUF056",
     "RUF057",
     "RUF058",
+    "RUF059",
     "SIM905",
     "TC006",
     "TC007",
@@ -497,6 +497,7 @@ ignore = [
     "TC001",  # TC001, TC002, TC003: don't care to enforce type checking blocks
     "TC002",
     "TC003",
+    "TC006",  # Strings in cast don't work with PyCharm CE 2024.3.4's jump-to-definition
     "TD002",  # Don't care for TODO author
     "TD003",  # Don't care for TODO links
     "TRY003",  # Overly pedantic
