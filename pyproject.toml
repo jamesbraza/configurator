@@ -163,30 +163,39 @@ ignore_missing_imports = true
 module = [
     "PIL",
     "accelerate.*",  # SEE: https://github.com/huggingface/accelerate/issues/2396
+    "aiohttp_client_cache.*",
     "cloudpickle",  # SEE: https://github.com/cloudpipe/cloudpickle/issues/541
     "colabfold.*",
     "datasets",  # SEE: https://github.com/huggingface/datasets/issues/3841
+    "deepspeed.*",  # SEE: https://github.com/microsoft/DeepSpeed/issues/6988
     "dicttoxml",  # SEE: https://github.com/quandyfactory/dicttoxml/issues/106
     "dill",
+    "doc2json.*",  # SEE: https://github.com/allenai/s2orc-doc2json/issues/36
     "docker",  # SEE: https://github.com/docker/docker-py/issues/2796
     "factory",  # SEE: https://github.com/FactoryBoy/factory_boy/issues/468
     "fastapi_socketio",  # SEE: https://github.com/pyropy/fastapi-socketio/issues/27
+    "fitz",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/3361
     "fsspec",  # SEE: https://github.com/fsspec/filesystem_spec/issues/625
+    "google.*",  # SEE: https://github.com/googleapis/python-genai/issues/61
     "google.cloud.storage",  # SEE: https://github.com/googleapis/python-storage/issues/393
     "google_crc32c",  # SEE: https://github.com/googleapis/python-crc32c/pull/211
+    "grobid_client.*",  # SEE: https://github.com/kermitt2/grobid_client_python/issues/71
     "huggingface_hub.*",  # SEE: https://github.com/huggingface/huggingface_hub/issues/1662
     "jsonschema.*",
     "litellm",  # SEE: https://github.com/BerriAI/litellm/issues/825
     "networkx",  # SEE: https://github.com/networkx/networkx/issues/3988
-    "openreview",
+    "openreview",  # SEE: https://github.com/openreview/openreview-py/issues/2551
+    "plotly.*",  # SEE: https://github.com/plotly/plotly.py/issues/4927
     "pybtex.*",  # SEE: https://bitbucket.org/pybtex-devs/pybtex/issues/141/type-annotations
     "pymupdf",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/2883
     "pyzotero",  # SEE: https://github.com/urschrei/pyzotero/issues/110
     "s3fs",  # SEE: https://github.com/fsspec/s3fs/issues/383
+    "sendgrid.*",
     "setuptools_scm",  # SEE: https://github.com/pypa/setuptools_scm/issues/501
     "socketio.*",  # SEE: https://github.com/miguelgrinberg/python-socketio/issues/1276
     "sweagent.*",
     "swebench.*",
+    "thefuzz",  # SEE: https://github.com/seatgeek/thefuzz/issues/72
     "tokenizers",
     "transformers.*",  # SEE: https://github.com/huggingface/transformers/pull/18485
     "tree",  # SEE: https://github.com/google-deepmind/tree/issues/84
@@ -221,6 +230,8 @@ disable = [
     "expression-not-assigned",  # Rely on mypy func-returns-value for this
     "fixme",  # codetags are useful
     "function-redefined",  # Rely on mypy no-redef for this
+    "global-statement",  # Rely on ruff PLW0603 for this
+    "global-variable-not-assigned",  # Rely on ruff PLW0602 for this
     "import-outside-toplevel",  # Rely on ruff PLC0415 for this
     "keyword-arg-before-vararg",  # Rely on ruff B026 for this
     "line-too-long",  # Rely on ruff E501 for this
@@ -236,6 +247,7 @@ disable = [
     "redefined-builtin",  # Rely on ruff A002 for this
     "too-few-public-methods",  # Don't care to enforce this
     "too-many-arguments",  # Don't care to enforce this
+    "too-many-boolean-expressions",  # Rely on ruff PLR0916 for this
     "too-many-branches",  # Rely on ruff PLR0912 for this
     "too-many-locals",  # Rely on ruff PLR0914 for this
     "too-many-public-methods",  # Rely on ruff PLR0904 for this
@@ -243,6 +255,7 @@ disable = [
     "too-many-statements",  # Rely on ruff PLR0915 for this
     "ungrouped-imports",  # Rely on ruff I001 for this
     "unidiomatic-typecheck",  # Rely on ruff E721 for this
+    "unnecessary-dict-index-lookup",  # Rely on ruff PLR1733 for this
     "unreachable",  # Rely on mypy unreachable for this
     "unspecified-encoding",  # Rely on ruff PLW1514 for this
     "unsubscriptable-object",  # Buggy, SEE: https://github.com/pylint-dev/pylint/issues/3637
@@ -251,6 +264,7 @@ disable = [
     "unused-import",  # Rely on ruff F401 for this
     "unused-variable",  # Rely on ruff F841 for this
     "unused-wildcard-import",  # Wildcard imports are convenient
+    "use-sequence-for-iteration",  # Rely on ruff C0208 for this
     "wildcard-import",  # Wildcard imports are convenient
     "wrong-import-order",  # Rely on ruff I001 for this
     "wrong-import-position",  # Rely on ruff E402 for this
@@ -301,9 +315,9 @@ preview = true
 [tool.ruff.lint]
 explicit-preview-rules = true
 extend-select = [
+    "AIR002",
     "AIR301",
     "AIR302",
-    "AIR303",
     "ASYNC116",
     "B901",
     "B903",
@@ -425,7 +439,6 @@ extend-select = [
     "RUF028",
     "RUF029",
     "RUF031",
-    "RUF035",
     "RUF036",
     "RUF037",
     "RUF038",
@@ -446,6 +459,7 @@ extend-select = [
     "RUF056",
     "RUF057",
     "RUF058",
+    "RUF059",
     "SIM905",
     "TC006",
     "TC007",
@@ -497,6 +511,7 @@ ignore = [
     "TC001",  # TC001, TC002, TC003: don't care to enforce type checking blocks
     "TC002",
     "TC003",
+    "TC006",  # Strings in cast don't work with PyCharm CE 2024.3.4's jump-to-definition
     "TD002",  # Don't care for TODO author
     "TD003",  # Don't care for TODO links
     "TRY003",  # Overly pedantic
