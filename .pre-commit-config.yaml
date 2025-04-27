@@ -8,7 +8,7 @@ repos:
     hooks:
       - id: black-jupyter
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.4
+    rev: v0.11.7
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
@@ -38,7 +38,7 @@ repos:
       - id: toml-sort-fix
   - repo: https://github.com/PyCQA/docformatter
     # SEE: https://github.com/PyCQA/docformatter/issues/293
-    rev: eb1df347edd128b30cd3368dddc3aa65edcfac38
+    rev: v1.7.5
     hooks:
       - id: docformatter
         additional_dependencies: [".[tomli]"]
@@ -66,7 +66,7 @@ repos:
     hooks:
       - id: check-mailmap
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 39.248.1
+    rev: 39.261.0
     hooks:
       - id: renovate-config-validator
   - repo: https://github.com/henryiii/validate-pyproject-schema-store
@@ -84,7 +84,7 @@ repos:
     hooks:
       - id: markdown-toc-creator
   - repo: https://github.com/sqlfluff/sqlfluff
-    rev: 3.3.1
+    rev: 3.4.0
     hooks:
       - id: sqlfluff-fix
   - repo: https://github.com/pycqa/flake8
