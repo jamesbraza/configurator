@@ -30,7 +30,7 @@ def test_pre_post_pre_commit() -> None:
 
     NOTE: it would be easier to use pyfakefs here to avoid the `git status` helper
     function, but this would require figuring out how to invoke `git init` in the fake
-    filesystem, which was a bit of a show stopper.
+    filesystem, which was a bit of a show-stopper.
     """
     pre_tools_git_status_name = str(PRE_TOOLS_PATH.relative_to(REPO_ROOT))
     if any(pre_tools_git_status_name in change for change in get_git_changes()):
@@ -47,7 +47,10 @@ def test_pre_post_pre_commit() -> None:
         cwd=REPO_ROOT,
     )
     try:
-        assert result.returncode == 1
+        assert result.returncode == 1, "Expected pre-commit to fail and make a change"
+        assert (
+            "error has occurred" not in result.stdout.decode()
+        ), "Expected pre-commit to run"
         git_changes = get_git_changes()
         assert len(git_changes) == 1
         assert git_changes[0] == f" M {pre_tools_git_status_name}"
