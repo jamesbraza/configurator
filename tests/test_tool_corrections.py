@@ -47,7 +47,10 @@ def test_pre_post_pre_commit() -> None:
         cwd=REPO_ROOT,
     )
     try:
-        assert result.returncode == 1
+        assert result.returncode == 1, "Expected pre-commit to fail and make a change"
+        assert (
+            "error has occurred" not in result.stdout.decode()
+        ), "Expected pre-commit to run"
         git_changes = get_git_changes()
         assert len(git_changes) == 1
         assert git_changes[0] == f" M {pre_tools_git_status_name}"
