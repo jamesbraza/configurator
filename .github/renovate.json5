@@ -24,5 +24,10 @@
       matchUpdateTypes: ["minor", "patch"],
       automerge: true,
     },
+    {
+      // SEE: https://github.com/PyCQA/docformatter/issues/293
+      matchPackageNames: ["docformatter"],
+      enabled: false,
+    },
   ],
 }
