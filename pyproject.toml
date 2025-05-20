@@ -182,8 +182,10 @@ module = [
     "grobid_client.*",  # SEE: https://github.com/kermitt2/grobid_client_python/issues/71
     "huggingface_hub.*",  # SEE: https://github.com/huggingface/huggingface_hub/issues/1662
     "jsonschema.*",
+    "lighteval.*",  # SEE: https://github.com/huggingface/lighteval/issues/749
     "litellm",  # SEE: https://github.com/BerriAI/litellm/issues/825
     "networkx",  # SEE: https://github.com/networkx/networkx/issues/3988
+    "newrelic.*",  # SEE:https://github.com/newrelic/newrelic-python-agent/issues/767
     "openreview",  # SEE: https://github.com/openreview/openreview-py/issues/2551
     "plotly.*",  # SEE: https://github.com/plotly/plotly.py/issues/4927
     "pybtex.*",  # SEE: https://bitbucket.org/pybtex-devs/pybtex/issues/141/type-annotations
