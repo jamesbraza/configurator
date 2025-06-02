@@ -40,7 +40,7 @@ def test_pre_post_pre_commit() -> None:
             " your changes before running this test case."
         )
 
-    result = subprocess.run(  # noqa: S603
+    result = subprocess.run(
         ("pre-commit", "run", "--all-files"),
         stdout=subprocess.PIPE,
         check=False,
@@ -61,7 +61,7 @@ def test_pre_post_pre_commit() -> None:
 
 
 def test_refurb() -> None:
-    result = subprocess.run(  # noqa: S603
+    result = subprocess.run(
         ("refurb", "src", "tests"), capture_output=True, check=False, cwd=REPO_ROOT
     )
     assert not result.stdout, "Unexpected refurb stdout"
@@ -70,7 +70,7 @@ def test_refurb() -> None:
 
 def test_pylint() -> None:
     with tempfile.NamedTemporaryFile() as stdout_f:
-        result = subprocess.run(  # noqa: S603
+        result = subprocess.run(
             ("pylint", "src", "tests"),
             stderr=subprocess.PIPE,
             stdout=stdout_f,
