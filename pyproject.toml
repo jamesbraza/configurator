@@ -161,9 +161,12 @@ warn_unused_ignores = true
 ignore_missing_imports = true
 # Per-module configuration options
 module = [
+    "Bio.*",  # SEE: https://github.com/biopython/biopython/issues/2236
     "PIL",
     "accelerate.*",  # SEE: https://github.com/huggingface/accelerate/issues/2396
+    "ahocorasick",
     "aiohttp_client_cache.*",
+    "choix",  # SEE: https://github.com/lucasmaystre/choix/issues/27
     "cloudpickle",  # SEE: https://github.com/cloudpipe/cloudpickle/issues/541
     "colabfold.*",
     "datasets",  # SEE: https://github.com/huggingface/datasets/issues/3841
