@@ -255,6 +255,7 @@ disable = [
     "too-many-boolean-expressions",  # Rely on ruff PLR0916 for this
     "too-many-branches",  # Rely on ruff PLR0912 for this
     "too-many-locals",  # Rely on ruff PLR0914 for this
+    "too-many-positional-arguments",  # Rely on ruff PLR0917 for this
     "too-many-public-methods",  # Rely on ruff PLR0904 for this
     "too-many-return-statements",  # Rely on ruff PLR0911 for this
     "too-many-statements",  # Rely on ruff PLR0915 for this
@@ -383,9 +384,7 @@ extend-select = [
     "FURB113",
     "FURB116",
     "FURB118",
-    "FURB122",
     "FURB131",
-    "FURB132",
     "FURB140",
     "FURB142",
     "FURB145",
@@ -393,17 +392,13 @@ extend-select = [
     "FURB152",
     "FURB154",
     "FURB156",
-    "FURB157",
-    "FURB162",
     "FURB164",
-    "FURB166",
     "FURB171",
     "FURB180",
     "FURB189",
     "FURB192",
     "LOG004",
-    "LOG014",
-    "PLC0415",
+    "PLC0207",
     "PLC1901",
     "PLC2701",
     "PLC2801",
@@ -417,24 +412,18 @@ extend-select = [
     "PLR0916",
     "PLR0917",
     "PLR1702",
-    "PLR1733",
     "PLR6104",
     "PLR6201",
     "PLR6301",
     "PLW0108",
-    "PLW0177",
     "PLW0244",
     "PLW1514",
-    "PLW1641",
     "PLW3201",
-    "PT028",
     "PT029",
-    "PT030",
-    "PT031",
+    "PTH211",
     "PYI059",
     "PYI061",
     "RUF027",
-    "RUF028",
     "RUF029",
     "RUF031",
     "RUF036",
@@ -444,26 +433,22 @@ extend-select = [
     "RUF043",
     "RUF045",
     "RUF047",
-    "RUF049",
     "RUF052",
-    "RUF053",
     "RUF054",
     "RUF055",
     "RUF056",
-    "RUF057",
-    "RUF058",
     "RUF059",
+    "RUF060",
+    "RUF061",
+    "RUF063",
+    "RUF064",
     "RUF102",
     "TC008",
     "UP042",
-    "UP045",
-    "UP046",
-    "UP047",
-    "UP049",
+    "UP050",
     "W391",
 ]
 external = [
-    "DOC501",  # pydoclint
     "FURB",  # refurb
 ]
 ignore = [
@@ -514,6 +499,7 @@ unfixable = [
     "ERA001",  # While debugging, temporarily commenting code can be useful
     "F401",  # While debugging, unused imports can be useful
     "F841",  # While debugging, unused locals can be useful
+    "RUF059",  # While debugging, unused locals can be useful
     "TC004",  # While debugging, it can be nice to keep TYPE_CHECKING in-tact
 ]
 
