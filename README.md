@@ -284,7 +284,7 @@ Yes, `>=24.2.0`, `jupyter` extra
 </td><td>
 
 I am a fan of the
-[`hug_parens_with_braces_and_square_brackets` preview option](https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html#preview-style).
+[`hug_parens_with_braces_and_square_brackets` preview option][1].
 
 </td></tr>
 <tr><td>
@@ -328,6 +328,8 @@ this makes PRs with Jupyter Notebooks easier to read.
 
 </td></tr>
 </table>
+
+[1]: https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html#preview-style
 
 ### Testing
 
@@ -727,7 +729,7 @@ GitHub Actions
 </td><td>
 
 Pair with `renovate-config-validator`, run via its `pre-commit` hook
-from https://github.com/renovatebot/pre-commit-hooks,
+from <https://github.com/renovatebot/pre-commit-hooks>,
 to validate the configuration file.
 
 </td></tr>
@@ -903,6 +905,8 @@ Command line
 
 ### Changing Repos
 
+<!-- markdownlint-disable line-length -->
+
 ```shell
 a() {
     : Activate : Clone repository if needed, change to directory, and activating Python and Node.js environments
@@ -940,3 +944,5 @@ curl -s \
   https://raw.githubusercontent.com/github/gitignore/master/{Global/Vim,Global/JetBrains,Global/VisualStudioCode,Global/macOS,Python}.gitignore \
   > .gitignore
 ```
+
+<!-- markdownlint-enable line-length -->
