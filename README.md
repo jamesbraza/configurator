@@ -213,6 +213,49 @@ Markdown table of contents
 `pre-commit` hook
 
 </td><td></td></tr>
+<tr><td>
+
+[`markdownlint-cli`](https://github.com/igorshubovych/markdownlint-cli)
+
+</td><td>
+
+Yes
+
+</td><td>
+
+Lint Markdown files
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+There's also [`markdownlint-cli2`](https://github.com/DavidAnson/markdownlint-cli2)
+but its configuration system does not support `pyproject.toml`.
+
+</td></tr>
+<tr><td>
+
+[`markdown-link-check`](https://github.com/tcort/markdown-link-check)
+
+</td><td>
+
+No
+
+</td><td>
+
+Confirm Markdown links are not dead.
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+Slows down `pre-commit` due to link visitation.
+
+</td></tr>
 </table>
 
 ## Python Tool Integrations
