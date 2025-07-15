@@ -213,6 +213,49 @@ Markdown table of contents
 `pre-commit` hook
 
 </td><td></td></tr>
+<tr><td>
+
+[`markdownlint-cli`](https://github.com/igorshubovych/markdownlint-cli)
+
+</td><td>
+
+Yes
+
+</td><td>
+
+Lint Markdown files
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+There's also [`markdownlint-cli2`](https://github.com/DavidAnson/markdownlint-cli2)
+but its configuration system does not support `pyproject.toml`.
+
+</td></tr>
+<tr><td>
+
+[`markdown-link-check`](https://github.com/tcort/markdown-link-check)
+
+</td><td>
+
+No
+
+</td><td>
+
+Confirm Markdown links are not dead.
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+Slows down `pre-commit` due to link visitation.
+
+</td></tr>
 </table>
 
 ## Python Tool Integrations
@@ -241,7 +284,7 @@ Yes, `>=24.2.0`, `jupyter` extra
 </td><td>
 
 I am a fan of the
-[`hug_parens_with_braces_and_square_brackets` preview option](https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html#preview-style).
+[`hug_parens_with_braces_and_square_brackets` preview option][1].
 
 </td></tr>
 <tr><td>
@@ -285,6 +328,8 @@ this makes PRs with Jupyter Notebooks easier to read.
 
 </td></tr>
 </table>
+
+[1]: https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html#preview-style
 
 ### Testing
 
@@ -684,7 +729,7 @@ GitHub Actions
 </td><td>
 
 Pair with `renovate-config-validator`, run via its `pre-commit` hook
-from https://github.com/renovatebot/pre-commit-hooks,
+from <https://github.com/renovatebot/pre-commit-hooks>,
 to validate the configuration file.
 
 </td></tr>
@@ -860,6 +905,8 @@ Command line
 
 ### Changing Repos
 
+<!-- markdownlint-disable line-length -->
+
 ```shell
 a() {
     : Activate : Clone repository if needed, change to directory, and activating Python and Node.js environments
@@ -897,3 +944,5 @@ curl -s \
   https://raw.githubusercontent.com/github/gitignore/master/{Global/Vim,Global/JetBrains,Global/VisualStudioCode,Global/macOS,Python}.gitignore \
   > .gitignore
 ```
+
+<!-- markdownlint-enable line-length -->
