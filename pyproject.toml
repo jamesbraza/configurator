@@ -240,6 +240,7 @@ jobs = 0
 disable = [
     "bare-except",  # Rely on ruff E722 for this
     "broad-exception-raised",  # Rely on ruff TRY002 for this
+    "consider-using-in",  # Rely on ruff PLR1714 for this
     "dangerous-default-value",  # Rely on ruff W0102 for this
     "empty-docstring",  # Let pep257 take care of docstrings
     "expression-not-assigned",  # Rely on mypy func-returns-value for this
@@ -308,6 +309,7 @@ enable_all = true
 ignore = [
     "FURB101",  # Rely on ruff FURB101 for this
     "FURB103",  # Rely on ruff FURB103 for this
+    "FURB108",  # Rely on ruff PLR1714 for this
     "FURB141",  # Rely on ruff PTH110 for this
     "FURB144",  # Rely on ruff PTH107 for this
     "FURB146",  # Rely on ruff PTH113 for this
