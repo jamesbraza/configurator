@@ -6,7 +6,21 @@
 ![license](https://img.shields.io/badge/License-MIT-blue.svg)
 [![python](https://img.shields.io/badge/python-3.11+-blue?style=flat&logo=python&logoColor=white)](https://www.python.org)
 
-Tool with configurations for the creation of better software.
+Tooling and configurations for the creation of better software.
+
+Goals of this repository:
+
+- Providing one configured toolchain that is fluent and valuable in
+  research, development, and production settings.
+- Resembling an [awesome list](https://github.com/topics/awesome) for developer tooling.
+- Being strict so that developers can think less, feel more relaxed,
+  and be proud of their code.
+- Not being stylistically restrictive or arduous to comply with.
+
+Aspirations of this repository:
+
+- Supporting auto-propagation of tooling configuration
+  changes across repositories.
 
 <!--TOC-->
 
