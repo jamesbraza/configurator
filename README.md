@@ -15,6 +15,7 @@ Tool with configurations for the creation of better software.
   - [Type Checking](#type-checking)
   - [Dependencies](#dependencies)
   - [Packaging](#packaging)
+  - [Configuration](#configuration)
 - [Helper Scripts](#helper-scripts)
   - [Changing Repos](#changing-repos)
   - [`.gitignore` Creation](#gitignore-creation)
@@ -899,6 +900,31 @@ Migration from `setup.cfg`/`ini` to `pyproject.toml`
 Command line
 
 </td><td></td></tr>
+</table>
+
+### Configuration
+
+<table>
+<tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
+<tr><td>
+
+[`nitpick`](https://github.com/andreoliwa/nitpick)
+([docs](https://nitpick.readthedocs.io/en/latest/))
+
+</td><td>No</td><td>
+
+Propagating configurations
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+Had tons of potential,
+but `nitpick` itself lacked the configurability for adoption here.
+
+</td></tr>
 </table>
 
 ## Helper Scripts
