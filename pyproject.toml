@@ -240,6 +240,7 @@ jobs = 0
 disable = [
     "bare-except",  # Rely on ruff E722 for this
     "broad-exception-raised",  # Rely on ruff TRY002 for this
+    "consider-using-in",  # Rely on ruff PLR1714 for this
     "dangerous-default-value",  # Rely on ruff W0102 for this
     "empty-docstring",  # Let pep257 take care of docstrings
     "expression-not-assigned",  # Rely on mypy func-returns-value for this
@@ -308,6 +309,7 @@ enable_all = true
 ignore = [
     "FURB101",  # Rely on ruff FURB101 for this
     "FURB103",  # Rely on ruff FURB103 for this
+    "FURB108",  # Rely on ruff PLR1714 for this
     "FURB141",  # Rely on ruff PTH110 for this
     "FURB144",  # Rely on ruff PTH107 for this
     "FURB146",  # Rely on ruff PTH113 for this
@@ -509,6 +511,7 @@ unfixable = [
     "ERA001",  # While debugging, temporarily commenting code can be useful
     "F401",  # While debugging, unused imports can be useful
     "F841",  # While debugging, unused locals can be useful
+    "PIE794",  # Autoremoving the latter of two fields is dangerous
     "RUF059",  # While debugging, unused locals can be useful
     "TC004",  # While debugging, it can be nice to keep TYPE_CHECKING in-tact
 ]
