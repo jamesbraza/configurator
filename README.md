@@ -1,6 +1,26 @@
 # configurator
 
-Tool with configurations for the creation of better software.
+[![github](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/jamesbraza/configurator)
+![ci](https://github.com/jamesbraza/configurator/actions/workflows/lint-test.yaml/badge.svg)
+[![repo status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+![license](https://img.shields.io/badge/License-MIT-blue.svg)
+[![python](https://img.shields.io/badge/python-3.11+-blue?style=flat&logo=python&logoColor=white)](https://www.python.org)
+
+Tooling and configurations for the creation of better software.
+
+Goals of this repository:
+
+- Providing one configured toolchain that is fluent and valuable in
+  research, development, and production settings.
+- Resembling an [awesome list](https://github.com/topics/awesome) for developer tooling.
+- Being strict so that developers can think less, feel more relaxed,
+  and be proud of their code.
+- Not being stylistically restrictive or arduous to comply with.
+
+Aspirations of this repository:
+
+- Supporting auto-propagation of tooling configuration
+  changes across repositories.
 
 <!--TOC-->
 
@@ -934,34 +954,65 @@ but `nitpick` itself lacked the configurability for adoption here.
 <!-- markdownlint-disable line-length -->
 
 ```shell
+pathver() {
+    : 'print PATH and VERsion; optionally assert version file matches'
+    source=$(type -p "$1")
+    if [[ -z $source ]]; then
+        source=$(type "$1")
+    fi
+    actual_version=$("$1" --version 2>&1 | gsed -En 's/(.+ )?(v?[0-9]+\.[0-9]+\.[^ ]+).*/\2/p')
+    echo "$source $actual_version"
+}
+
 a() {
-    : Activate : Clone repository if needed, change to directory, and activating Python and Node.js environments
-    repo=${1:-.}
-    if [[ $repo != . ]]; then
-        directory=$repo  # No renames currently in progress
-        [[ -d $HOME/code/$directory ]] || git clone "git@github.com:Synthego/$repo.git" "$HOME/code/$directory";
-        cd "$HOME/code/$directory" || return
+    : 'Activate virtual environment after changing directory'
+
+    if [[ ${1-} ]]; then
+        directory=~/code/$1
+    else
+        directory=.
     fi
 
-    if [[ -n $PYENV_VIRTUAL_ENV ]]; then
-        # shellcheck disable=SC1091
-        . deactivate
-    elif [[ -n $VIRTUAL_ENV ]]; then
-        deactivate
+    if ! [[ -d $directory ]]; then
+        echo "ERROR: $directory is not a directory"
+        return 1
     fi
-    local venv=none
+
+    cd "$directory" || return 1
+
+    [[ ${CONDA_PREFIX-} && $(command -v conda) ]] && conda deactivate
+    if [[ ${VIRTUAL_ENV-} ]]; then
+        might_be_file=$(command -v deactivate)
+        if [[ $might_be_file ]]; then
+            if [[ -f $might_be_file ]]; then
+                # pyenv-virtualenv wants this
+                # shellcheck disable=SC1091
+                source deactivate
+            else
+                deactivate
+            fi
+        fi
+    fi
+
     if [[ -f .venv/bin/activate ]]; then
-        venv=.venv
-    elif [[ -f venv/bin/activate ]]; then
-        venv=venv
+        # shellcheck disable=SC1091
+        source .venv/bin/activate
+        pathver python .python-version
+    elif [[ -d conda ]]; then
+        # shellcheck disable=SC1090
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate "$(basename "$PWD")"
+        pathver python .python-version
     fi
-    if [[ $venv != none ]]; then
-        # shellcheck disable=SC1090,SC1091
-        . $venv/bin/activate
-        (python --version; type python | sed -E "s,^[^/]*(/.+)\),\1,") | xargs echo
+
+    if [[ -f .nvmrc ]]; then
+        pathver node .nvmrc
     fi
 }
 ```
+
+This was taken from
+<https://github.com/biobuddies/helicopyter/blob/main/.biobuddies/includes.bash>.
 
 ### `.gitignore` Creation
 
