@@ -1,5 +1,11 @@
 # configurator
 
+[![github](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/jamesbraza/configurator)
+![ci](https://github.com/jamesbraza/configurator/actions/workflows/lint-test.yaml/badge.svg)
+[![repo status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+![license](https://img.shields.io/badge/License-MIT-blue.svg)
+[![python](https://img.shields.io/badge/python-3.11+-blue?style=flat&logo=python&logoColor=white)](https://www.python.org)
+
 Tool with configurations for the creation of better software.
 
 <!--TOC-->
