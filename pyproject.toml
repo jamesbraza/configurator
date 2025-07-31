@@ -110,7 +110,7 @@ max-line-length = 97  # Match ruff line-length
 style = "google"
 
 [tool.markdownlint]
-no-duplicate-heading = false  # GitHub appends -X for duplicated headings
+no-duplicate-heading = {siblings_only = true}  # GitHub appends -X for duplicated headings
 no-inline-html = false
 
 [tool.markdownlint.line-length]
