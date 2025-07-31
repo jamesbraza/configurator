@@ -1,5 +1,7 @@
 # configurator
 
+<!-- pyml disable-num-lines 6 line-length -->
+
 [![github](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/jamesbraza/configurator)
 ![ci](https://github.com/jamesbraza/configurator/actions/workflows/lint-test.yaml/badge.svg)
 [![repo status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -974,7 +976,7 @@ but `nitpick` itself lacked the configurability for adoption here.
 
 ### Changing Repos
 
-<!-- markdownlint-disable line-length -->
+<!-- pyml disable line-length -->
 
 ```shell
 pathver() {
@@ -1034,15 +1036,17 @@ a() {
 }
 ```
 
+<!-- pyml enable line-length -->
+
 This was taken from
 <https://github.com/biobuddies/helicopyter/blob/main/.biobuddies/includes.bash>.
 
 ### `.gitignore` Creation
+
+<!-- pyml disable-num-lines 3 line-length -->
 
 ```bash
 curl -s \
   https://raw.githubusercontent.com/github/gitignore/master/{Global/Vim,Global/JetBrains,Global/VisualStudioCode,Global/macOS,Python}.gitignore \
   > .gitignore
 ```
-
-<!-- markdownlint-enable line-length -->
