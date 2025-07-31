@@ -1,5 +1,7 @@
 # configurator
 
+<!-- pyml disable-num-lines 6 line-length -->
+
 [![github](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/jamesbraza/configurator)
 ![ci](https://github.com/jamesbraza/configurator/actions/workflows/lint-test.yaml/badge.svg)
 [![repo status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -236,11 +238,34 @@ Markdown table of contents
 </td><td></td></tr>
 <tr><td>
 
-[`markdownlint-cli`](https://github.com/igorshubovych/markdownlint-cli)
+[`pymarkdown`](https://github.com/jackdewinter/pymarkdown)
+([docs](https://pymarkdown.readthedocs.io/en/stable/))
 
 </td><td>
 
 Yes
+
+</td><td>
+
+Lint Markdown files
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+This tool is a superset of the below `markdownlint-cli`,
+and on the same repos was seen to catch more errors.
+
+</td></tr>
+<tr><td>
+
+[`markdownlint-cli`](https://github.com/igorshubovych/markdownlint-cli)
+
+</td><td>
+
+No
 
 </td><td>
 
@@ -951,7 +976,7 @@ but `nitpick` itself lacked the configurability for adoption here.
 
 ### Changing Repos
 
-<!-- markdownlint-disable line-length -->
+<!-- pyml disable line-length -->
 
 ```shell
 pathver() {
@@ -1011,15 +1036,17 @@ a() {
 }
 ```
 
+<!-- pyml enable line-length -->
+
 This was taken from
 <https://github.com/biobuddies/helicopyter/blob/main/.biobuddies/includes.bash>.
 
 ### `.gitignore` Creation
+
+<!-- pyml disable-num-lines 3 line-length -->
 
 ```bash
 curl -s \
   https://raw.githubusercontent.com/github/gitignore/master/{Global/Vim,Global/JetBrains,Global/VisualStudioCode,Global/macOS,Python}.gitignore \
   > .gitignore
 ```
-
-<!-- markdownlint-enable line-length -->
