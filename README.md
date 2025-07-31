@@ -236,11 +236,34 @@ Markdown table of contents
 </td><td></td></tr>
 <tr><td>
 
-[`markdownlint-cli`](https://github.com/igorshubovych/markdownlint-cli)
+[`pymarkdown`](https://github.com/jackdewinter/pymarkdown)
+([docs](https://pymarkdown.readthedocs.io/en/stable/))
 
 </td><td>
 
 Yes
+
+</td><td>
+
+Lint Markdown files
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+This tool is a superset of the below `markdownlint-cli`,
+and on the same repos was seen to catch more errors.
+
+</td></tr>
+<tr><td>
+
+[`markdownlint-cli`](https://github.com/igorshubovych/markdownlint-cli)
+
+</td><td>
+
+No
 
 </td><td>
 
