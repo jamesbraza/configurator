@@ -166,12 +166,13 @@ module = [
     "accelerate.*",  # SEE: https://github.com/huggingface/accelerate/issues/2396
     "ahocorasick",
     "aiohttp_client_cache.*",
-    "choix",  # SEE: https://github.com/lucasmaystre/choix/issues/27
+    "asyncpg",  # SEE: https://github.com/MagicStack/asyncpg/issues/569
     "cloudpickle",  # SEE: https://github.com/cloudpipe/cloudpickle/issues/541
     "colabfold.*",
     "datasets",  # SEE: https://github.com/huggingface/datasets/issues/3841
     "deepspeed.*",  # SEE: https://github.com/microsoft/DeepSpeed/issues/6988
     "dicttoxml",  # SEE: https://github.com/quandyfactory/dicttoxml/issues/106
+    "diff_match_patch",  # SEE: https://github.com/diff-match-patch-python/diff-match-patch/issues/15
     "dill",
     "doc2json.*",  # SEE: https://github.com/allenai/s2orc-doc2json/issues/36
     "docker",  # SEE: https://github.com/docker/docker-py/issues/2796
@@ -193,6 +194,7 @@ module = [
     "plotly.*",  # SEE: https://github.com/plotly/plotly.py/issues/4927
     "pybtex.*",  # SEE: https://bitbucket.org/pybtex-devs/pybtex/issues/141/type-annotations
     "pymupdf",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/2883
+    "pypdfium2",  # SEE: https://github.com/pypdfium2-team/pypdfium2/issues/367
     "pyzotero",  # SEE: https://github.com/urschrei/pyzotero/issues/110
     "s3fs",  # SEE: https://github.com/fsspec/s3fs/issues/383
     "sendgrid.*",
