@@ -231,6 +231,7 @@ jobs = 0
 # Disable the message, report, category or checker with the given id(s).
 disable = [
     "bare-except",  # Rely on ruff E722 for this
+    "broad-exception-caught",  # Rely on ruff BLE001 for this
     "broad-exception-raised",  # Rely on ruff TRY002 for this
     "consider-using-in",  # Rely on ruff PLR1714 for this
     "dangerous-default-value",  # Rely on ruff W0102 for this
