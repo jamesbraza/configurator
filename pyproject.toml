@@ -37,7 +37,7 @@ dev = [
     "flake8-requirements",
     "ipython>=8",  # Pin to keep recent
     "mypy>=1.8",  # For addition of mutable-override
-    "pre-commit>=3.4",
+    "prek",
     "pylint>=3",
     "pytest",
     "pytest-subtests",
