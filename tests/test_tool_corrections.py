@@ -78,9 +78,14 @@ def test_pylint() -> None:
             check=False,
             cwd=REPO_ROOT,
         )
-        assert filecmp.cmp(
-            stdout_f.name, EXPECTED_PYLINT_PATH, shallow=False
-        ), "Unexpected pylint stdout"
+        try:
+            assert filecmp.cmp(stdout_f.name, EXPECTED_PYLINT_PATH, shallow=False)
+        except AssertionError as exc:
+            pylint_output = pathlib.Path(stdout_f.name).read_text(encoding="utf-8")
+            raise AssertionError(
+                f"Unexpected pylint stdout: {pylint_output},"
+                f" pylint stderr: {result.stderr.decode('utf-8')}."
+            ) from exc
     assert not result.stderr, "Unexpected pylint stderr"
 
 
