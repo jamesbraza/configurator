@@ -27,7 +27,7 @@ POST_TOOLS_PATH = SRC_DIR / "pre_tools.py"
 
 def test_pre_post_pre_commit() -> None:
     """
-    Test that pre-commit runs and converts pre_tools.py to post_tools.py.
+    Test that prek runs and converts pre_tools.py to post_tools.py.
 
     NOTE: it would be easier to use pyfakefs here to avoid the `git status` helper
     function, but this would require figuring out how to invoke `git init` in the fake
@@ -36,22 +36,22 @@ def test_pre_post_pre_commit() -> None:
     pre_tools_git_status_name = str(PRE_TOOLS_PATH.relative_to(REPO_ROOT))
     if any(pre_tools_git_status_name in change for change in get_git_changes()):
         raise NotImplementedError(
-            "This test case will run pre-commit on the file"
+            "This test case will run prek on the file"
             f" {pre_tools_git_status_name}, which can mutate the file. Please commit"
             " your changes before running this test case."
         )
 
     result = subprocess.run(
-        ("pre-commit", "run", "--all-files"),
+        ("prek", "run", "--all-files"),
         stdout=subprocess.PIPE,
         check=False,
         cwd=REPO_ROOT,
     )
     try:
-        assert result.returncode == 1, "Expected pre-commit to fail and make a change"
+        assert result.returncode == 1, "Expected prek to fail and make a change"
         assert (
             "error has occurred" not in result.stdout.decode()
-        ), "Expected pre-commit to run"
+        ), "Expected prek to run"
         git_changes = get_git_changes()
         assert len(git_changes) == 1
         assert git_changes[0] == f" M {pre_tools_git_status_name}"
