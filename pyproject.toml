@@ -339,10 +339,12 @@ preview = true
 explicit-preview-rules = true
 extend-select = [
     "ASYNC212",
+    "ASYNC240",
     "ASYNC250",
     "B901",
     "B903",
     "B909",
+    "B912",
     "CPY001",
     "DOC201",
     "DOC202",
@@ -449,6 +451,7 @@ extend-select = [
     "RUF061",
     "RUF063",
     "RUF064",
+    "RUF065",
     "RUF102",
     "TC008",
     "UP042",
