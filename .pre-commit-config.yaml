@@ -4,11 +4,11 @@ default_language_version:
 
 repos:
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 25.1.0
+    rev: 25.9.0
     hooks:
       - id: black-jupyter
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.13.0
+    rev: v0.14.0
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
@@ -57,7 +57,7 @@ repos:
       - id: codespell
         additional_dependencies: [".[toml]"]
   - repo: https://github.com/hadolint/hadolint
-    rev: v2.13.1
+    rev: v2.14.0
     hooks:
       - id: hadolint-docker
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
@@ -65,11 +65,11 @@ repos:
     hooks:
       - id: check-mailmap
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 41.100.0
+    rev: 41.143.1
     hooks:
       - id: renovate-config-validator
   - repo: https://github.com/henryiii/validate-pyproject-schema-store
-    rev: 2025.09.11
+    rev: 2025.10.03
     hooks:
       - id: validate-pyproject
   - repo: https://github.com/henryiii/check-sdist
@@ -98,6 +98,6 @@ repos:
           - Flake8-pyproject>=1.2.0 # For --toml-config
           - pydoclint # Remove after https://github.com/astral-sh/ruff/issues/458
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.17.1
+    rev: v1.18.2
     hooks:
       - id: mypy
