@@ -539,6 +539,9 @@ max-doc-length = 97  # Match line-length
 # defaults when analyzing docstring sections.
 convention = "google"
 
+[tool.setuptools]
+package-dir = {"configurator" = "src"}
+
 [tool.setuptools_scm]
 version_file = "src/version.py"
 

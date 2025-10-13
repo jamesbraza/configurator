@@ -86,3 +86,8 @@ def test_pylint() -> None:
 
 def test_version() -> None:
     assert importlib.metadata.version("configurator") > "0.1.0"
+
+
+def test_import() -> None:
+    """Test we can import a module from the expected namespace."""
+    from configurator import post_tools  # noqa: F401,PLC0415
