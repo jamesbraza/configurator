@@ -37,7 +37,7 @@ dev = [
     "flake8-requirements",
     "ipython>=8",  # Pin to keep recent
     "mypy>=1.8",  # For addition of mutable-override
-    "pre-commit>=3.4",
+    "prek",
     "pylint>=3",
     "pytest",
     "pytest-subtests",
@@ -313,6 +313,9 @@ plugins.no-inline-html.enabled = false
 # Add the specified `OPTS` to the set of command line arguments as if they had
 # been specified by the user.
 addopts = "--typeguard-packages=configurator --doctest-modules"
+markers = [
+    "filesystem: tests that mutate the filesystem",
+]
 
 [tool.refurb]
 enable_all = true
