@@ -27,6 +27,7 @@ Aspirations of this repository:
 <!--TOC-->
 
 - [Non-Python Tool Integrations](#non-python-tool-integrations)
+  - [Git Hooks](#git-hooks)
   - [Autoformatters](#autoformatters)
   - [Linters](#linters)
   - [Markdown](#markdown)
@@ -45,6 +46,63 @@ Aspirations of this repository:
 <!--TOC-->
 
 ## Non-Python Tool Integrations
+
+### Git Hooks
+
+<table>
+<tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
+<tr><td>
+
+[`pre-commit`](https://github.com/pre-commit/pre-commit)
+([docs](https://pre-commit.com/))
+
+</td><td>
+
+No
+
+</td><td>
+
+Package manager for Git's pre-commit hooks.
+
+</td><td>
+
+`pre-commit install`, to run automatically upon `git commit`,
+or manually via `pre-commit run`.
+If in GitHub Actions,
+<https://github.com/pre-commit/action> will install/run it on all files,
+and <https://github.com/pre-commit-ci/lite-action> will commit any autofixes.
+
+</td><td>
+
+This project changed the world.
+
+</td></tr>
+<tr><td>
+
+[`prek`](https://github.com/j178/prek)
+([docs](https://prek.j178.dev/))
+
+</td><td>
+
+Yes, `>=0.2.3`
+
+</td><td>
+
+Rust port and expansion of the above `pre-commit`.
+
+</td><td>
+
+`prek install`, to run automatically upon `git commit`,
+or manually via `prek run`.
+If in GitHub Actions,
+<https://github.com/j178/prek-action> will install/run it on all files.
+
+</td><td>
+
+Backwards compatible with `pre-commit` for easy migration.
+
+</td></tr>
+</table>
 
 ### Autoformatters
 
