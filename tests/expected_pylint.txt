@@ -1,2 +1,2 @@
-************* Module pre_tools
+************* Module src.pre_tools
 src/pre_tools.py:7:4: C0104: Disallowed name "foo" (disallowed-name)
