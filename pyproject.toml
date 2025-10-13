@@ -223,6 +223,12 @@ max-attributes = 12
 max-line-length = 97  # Match ruff line-length
 
 [tool.pylint.main]
+# Files or directories matching the regular expression patterns are skipped.
+# The regex matches against base names, not paths. The default value ignores
+# Emacs file locks
+ignore-patterns = [
+    "^version\\.py$",  # Version files made by setuptools_scm
+]
 # Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
 # number of processors available to use, and will cap the count on Windows to
 # avoid hangs.
@@ -532,6 +538,9 @@ max-doc-length = 97  # Match line-length
 # Whether to use Google-style or NumPy-style conventions or the PEP257
 # defaults when analyzing docstring sections.
 convention = "google"
+
+[tool.setuptools_scm]
+version_file = "src/version.py"
 
 [tool.sqlfluff.core]
 max_line_length = 88  # Match black
