@@ -5,6 +5,8 @@ import pathlib
 import subprocess
 import tempfile
 
+import pytest
+
 TESTS_DIR = pathlib.Path(__file__).parent
 EXPECTED_PYLINT_PATH = TESTS_DIR / "expected_pylint.txt"
 
@@ -25,6 +27,7 @@ PRE_TOOLS_PATH = SRC_DIR / "pre_tools.py"
 POST_TOOLS_PATH = SRC_DIR / "pre_tools.py"
 
 
+@pytest.mark.filesystem
 def test_pre_post_pre_commit() -> None:
     """
     Test that prek runs and converts pre_tools.py to post_tools.py.

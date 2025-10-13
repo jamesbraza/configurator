@@ -21,4 +21,7 @@ jobs:
         with:
           enable-cache: true
           python-version: ${{ matrix.python-version }}
-      - run: uv run pytest -n auto
+      - name: Run filesystem-mutating tests
+        run: uv run pytest -m filesystem # Avoid race conditions by running sequentially
+      - name: Run remaining tests
+        run: uv run pytest -m "not filesystem" -n auto
