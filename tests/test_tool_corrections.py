@@ -1,4 +1,5 @@
 import filecmp
+import importlib.metadata
 import os
 import pathlib
 import subprocess
@@ -81,3 +82,7 @@ def test_pylint() -> None:
             stdout_f.name, EXPECTED_PYLINT_PATH, shallow=False
         ), "Unexpected pylint stdout"
     assert not result.stderr, "Unexpected pylint stderr"
+
+
+def test_version() -> None:
+    assert importlib.metadata.version("configurator") > "0.1.0"
