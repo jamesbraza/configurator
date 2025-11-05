@@ -253,6 +253,7 @@ disable = [
     "global-statement",  # Rely on ruff PLW0603 for this
     "global-variable-not-assigned",  # Rely on ruff PLW0602 for this
     "import-outside-toplevel",  # Rely on ruff PLC0415 for this
+    "import-private-name",  # Rely on ruff PLC2701 for this
     "keyword-arg-before-vararg",  # Rely on ruff B026 for this
     "line-too-long",  # Rely on ruff E501 for this
     "logging-fstring-interpolation",  # f-strings are convenient
@@ -533,6 +534,7 @@ mypy-init-return = true
 [tool.ruff.lint.per-file-ignores]
 "**/tests/*.py" = [
     "N802",  # Tests function names can match class names
+    "PLC2701",  # Test can import private names if needed
     "PLR2004",  # Tests can have magic values
     "PLR6301",  # Test classes can ignore self
     "S101",  # Tests can have assertions
