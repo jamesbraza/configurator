@@ -183,6 +183,7 @@ module = [
     "docker",  # SEE: https://github.com/docker/docker-py/issues/2796
     "factory",  # SEE: https://github.com/FactoryBoy/factory_boy/issues/468
     "fastapi_socketio",  # SEE: https://github.com/pyropy/fastapi-socketio/issues/27
+    "firebase_admin",  # SEE: https://github.com/firebase/firebase-admin-python/issues/860
     "fitz",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/3361
     "fsspec",  # SEE: https://github.com/fsspec/filesystem_spec/issues/625
     "google.*",  # SEE: https://github.com/googleapis/python-genai/issues/61
@@ -266,6 +267,7 @@ disable = [
     "protected-access",  # Don't care to enforce this in testing
     "raise-missing-from",  # Rely on ruff B904 for this
     "redefined-builtin",  # Rely on ruff A002 for this
+    "stop-iteration-return",  # Rely on ruff PLR1708 for this
     "too-few-public-methods",  # Don't care to enforce this
     "too-many-arguments",  # Don't care to enforce this
     "too-many-boolean-expressions",  # Rely on ruff PLR0916 for this
