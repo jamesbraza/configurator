@@ -265,6 +265,7 @@ disable = [
     "protected-access",  # Don't care to enforce this in testing
     "raise-missing-from",  # Rely on ruff B904 for this
     "redefined-builtin",  # Rely on ruff A002 for this
+    "stop-iteration-return",  # Rely on ruff PLR1708 for this
     "too-few-public-methods",  # Don't care to enforce this
     "too-many-arguments",  # Don't care to enforce this
     "too-many-boolean-expressions",  # Rely on ruff PLR0916 for this
@@ -439,6 +440,7 @@ extend-select = [
     "PLR0916",
     "PLR0917",
     "PLR1702",
+    "PLR1708",
     "PLR6104",
     "PLR6201",
     "PLR6301",
