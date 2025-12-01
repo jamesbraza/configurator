@@ -26,6 +26,10 @@ Aspirations of this repository:
 
 <!--TOC-->
 
+---
+
+**Table of Contents**
+
 - [Non-Python Tool Integrations](#non-python-tool-integrations)
   - [Git Hooks](#git-hooks)
   - [Autoformatters](#autoformatters)
@@ -42,6 +46,8 @@ Aspirations of this repository:
 - [Helper Scripts](#helper-scripts)
   - [Changing Repos](#changing-repos)
   - [`.gitignore` Creation](#gitignore-creation)
+
+---
 
 <!--TOC-->
 

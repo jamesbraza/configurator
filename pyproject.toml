@@ -39,11 +39,10 @@ dev = [
     "mypy>=1.8",  # For addition of mutable-override
     "prek",
     "pylint>=3",
-    "pytest",
-    "pytest-subtests",
     "pytest-sugar",
     "pytest-timer[colorama]",
     "pytest-xdist",
+    "pytest>=9",  # For pytest-subtests upstreaming
     "refurb>=2",
     "typeguard",
 ]
@@ -109,6 +108,10 @@ ignore = [
 # Set the maximum length that any line (with some exceptions) may be.
 max-line-length = 97  # Match ruff line-length
 style = "google"
+
+[tool.markdown_toc_creator]
+horizontal-rule-style = "prettier"
+proactive = false
 
 [tool.mypy]
 # Type-checks the interior of functions without type annotations.
@@ -179,6 +182,7 @@ module = [
     "docker",  # SEE: https://github.com/docker/docker-py/issues/2796
     "factory",  # SEE: https://github.com/FactoryBoy/factory_boy/issues/468
     "fastapi_socketio",  # SEE: https://github.com/pyropy/fastapi-socketio/issues/27
+    "firebase_admin",  # SEE: https://github.com/firebase/firebase-admin-python/issues/860
     "fitz",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/3361
     "fsspec",  # SEE: https://github.com/fsspec/filesystem_spec/issues/625
     "google.*",  # SEE: https://github.com/googleapis/python-genai/issues/61
@@ -309,10 +313,10 @@ plugins.no-duplicate-heading.siblings_only = true  # GitHub appends -X for dupli
 plugins.no-emphasis-as-heading.enabled = false
 plugins.no-inline-html.enabled = false
 
-[tool.pytest.ini_options]
+[tool.pytest]
 # Add the specified `OPTS` to the set of command line arguments as if they had
 # been specified by the user.
-addopts = "--typeguard-packages=configurator --doctest-modules"
+addopts = ["--doctest-modules", "--typeguard-packages=configurator"]
 markers = [
     "filesystem: tests that mutate the filesystem",
 ]
@@ -354,6 +358,7 @@ extend-select = [
     "B909",
     "B912",
     "CPY001",
+    "DOC102",
     "DOC201",
     "DOC202",
     "DOC402",
@@ -527,6 +532,7 @@ mypy-init-return = true
 [tool.ruff.lint.per-file-ignores]
 "**/tests/*.py" = [
     "N802",  # Tests function names can match class names
+    "PLC2701",  # Test can import private names if needed
     "PLR2004",  # Tests can have magic values
     "PLR6301",  # Test classes can ignore self
     "S101",  # Tests can have assertions
