@@ -39,11 +39,10 @@ dev = [
     "mypy>=1.8",  # For addition of mutable-override
     "prek",
     "pylint>=3",
-    "pytest",
-    "pytest-subtests",
     "pytest-sugar",
     "pytest-timer[colorama]",
     "pytest-xdist",
+    "pytest>=9",  # For pytest-subtests upstreaming
     "refurb>=2",
     "typeguard",
 ]
@@ -313,10 +312,10 @@ plugins.no-duplicate-heading.siblings_only = true  # GitHub appends -X for dupli
 plugins.no-emphasis-as-heading.enabled = false
 plugins.no-inline-html.enabled = false
 
-[tool.pytest.ini_options]
+[tool.pytest]
 # Add the specified `OPTS` to the set of command line arguments as if they had
 # been specified by the user.
-addopts = "--typeguard-packages=configurator --doctest-modules"
+addopts = ["--doctest-modules", "--typeguard-packages=configurator"]
 markers = [
     "filesystem: tests that mutate the filesystem",
 ]
