@@ -13,7 +13,6 @@ authors = [
 # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
 classifiers = [
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -25,7 +24,7 @@ dynamic = [
     "version",  # Required for setuptools_scm
 ]
 keywords = ["configuration", "quality assurance", "tooling"]
-license = {file = "LICENSE"}
+license = "MIT"
 name = "configurator"
 readme = "README.md"
 requires-python = ">=3.11"
