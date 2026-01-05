@@ -265,11 +265,13 @@ disable = [
     "protected-access",  # Don't care to enforce this in testing
     "raise-missing-from",  # Rely on ruff B904 for this
     "redefined-builtin",  # Rely on ruff A002 for this
+    "stop-iteration-return",  # Rely on ruff PLR1708 for this
     "too-few-public-methods",  # Don't care to enforce this
     "too-many-arguments",  # Don't care to enforce this
     "too-many-boolean-expressions",  # Rely on ruff PLR0916 for this
     "too-many-branches",  # Rely on ruff PLR0912 for this
     "too-many-locals",  # Rely on ruff PLR0914 for this
+    "too-many-nested-blocks",  # Rely on ruff PLR1702 for this
     "too-many-positional-arguments",  # Rely on ruff PLR0917 for this
     "too-many-public-methods",  # Rely on ruff PLR0904 for this
     "too-many-return-statements",  # Rely on ruff PLR0911 for this
@@ -424,6 +426,7 @@ extend-select = [
     "FURB180",
     "FURB189",
     "FURB192",
+    "ISC004",
     "LOG004",
     "PLC0207",
     "PLC1901",
@@ -439,6 +442,7 @@ extend-select = [
     "PLR0916",
     "PLR0917",
     "PLR1702",
+    "PLR1708",
     "PLR6104",
     "PLR6201",
     "PLR6301",
@@ -465,6 +469,7 @@ extend-select = [
     "RUF063",
     "RUF064",
     "RUF065",
+    "RUF066",
     "RUF102",
     "TC008",
     "UP042",
