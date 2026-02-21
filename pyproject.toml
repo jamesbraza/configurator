@@ -13,7 +13,6 @@ authors = [
 # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
 classifiers = [
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -25,7 +24,7 @@ dynamic = [
     "version",  # Required for setuptools_scm
 ]
 keywords = ["configuration", "quality assurance", "tooling"]
-license = {file = "LICENSE"}
+license = "MIT"
 name = "configurator"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -56,6 +55,9 @@ enable-unstable-feature = [
     "hug_parens_with_braces_and_square_brackets",  # TODO: remove after https://github.com/psf/black/issues/4036 resolution
 ]
 preview = true
+
+[tool.check-sdist]
+sdist-only = ["src/version.py"]
 
 [tool.codespell]
 check-filenames = true
@@ -265,11 +267,13 @@ disable = [
     "protected-access",  # Don't care to enforce this in testing
     "raise-missing-from",  # Rely on ruff B904 for this
     "redefined-builtin",  # Rely on ruff A002 for this
+    "stop-iteration-return",  # Rely on ruff PLR1708 for this
     "too-few-public-methods",  # Don't care to enforce this
     "too-many-arguments",  # Don't care to enforce this
     "too-many-boolean-expressions",  # Rely on ruff PLR0916 for this
     "too-many-branches",  # Rely on ruff PLR0912 for this
     "too-many-locals",  # Rely on ruff PLR0914 for this
+    "too-many-nested-blocks",  # Rely on ruff PLR1702 for this
     "too-many-positional-arguments",  # Rely on ruff PLR0917 for this
     "too-many-public-methods",  # Rely on ruff PLR0904 for this
     "too-many-return-statements",  # Rely on ruff PLR0911 for this
@@ -350,13 +354,11 @@ preview = true
 [tool.ruff.lint]
 explicit-preview-rules = true
 extend-select = [
-    "ASYNC212",
-    "ASYNC240",
-    "ASYNC250",
+    "AIR303",
+    "AIR321",
     "B901",
     "B903",
     "B909",
-    "B912",
     "CPY001",
     "DOC102",
     "DOC201",
@@ -408,7 +410,6 @@ extend-select = [
     "E502",
     "FURB101",
     "FURB103",
-    "FURB110",
     "FURB113",
     "FURB118",
     "FURB131",
@@ -420,12 +421,11 @@ extend-select = [
     "FURB154",
     "FURB156",
     "FURB164",
-    "FURB171",
     "FURB180",
     "FURB189",
     "FURB192",
+    "ISC004",
     "LOG004",
-    "PLC0207",
     "PLC1901",
     "PLC2701",
     "PLC2801",
@@ -439,10 +439,10 @@ extend-select = [
     "PLR0916",
     "PLR0917",
     "PLR1702",
+    "PLR1708",
     "PLR6104",
     "PLR6201",
     "PLR6301",
-    "PLW0108",
     "PLW0244",
     "PLW1514",
     "PLW3201",
@@ -451,7 +451,6 @@ extend-select = [
     "RUF029",
     "RUF031",
     "RUF036",
-    "RUF037",
     "RUF038",
     "RUF039",
     "RUF045",
@@ -460,14 +459,13 @@ extend-select = [
     "RUF054",
     "RUF055",
     "RUF056",
-    "RUF060",
-    "RUF061",
     "RUF063",
-    "RUF064",
     "RUF065",
-    "RUF102",
+    "RUF066",
+    "RUF067",
+    "RUF068",
+    "RUF069",
     "TC008",
-    "UP042",
     "W391",
 ]
 external = [
@@ -533,6 +531,7 @@ mypy-init-return = true
 "**/tests/*.py" = [
     "N802",  # Tests function names can match class names
     "PLC2701",  # Test can import private names if needed
+    "PLR0904",  # Test classes can have many cases
     "PLR2004",  # Tests can have magic values
     "PLR6301",  # Test classes can ignore self
     "S101",  # Tests can have assertions
