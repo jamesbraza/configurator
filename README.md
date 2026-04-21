@@ -404,7 +404,7 @@ I am a fan of the
 
 </td><td>
 
-Yes,`>=1.7`
+Yes, `>=1.7.8`
 
 </td><td>
 
@@ -414,7 +414,12 @@ Formatting docstrings
 
 `pre-commit` hook
 
-</td><td></td></tr>
+</td><td>
+
+Lower pin for Python 3.14 support from its
+[PR#325](https://github.com/PyCQA/docformatter/pull/325).
+
+</td></tr>
 <tr><td>
 
 [`nb-clean`](https://github.com/srstevenson/nb-clean)
