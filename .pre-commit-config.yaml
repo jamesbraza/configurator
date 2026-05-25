@@ -98,6 +98,6 @@ repos:
           - Flake8-pyproject>=1.2.0 # For --toml-config
           - pydoclint # Remove after https://github.com/astral-sh/ruff/issues/458
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.20.2
+    rev: v2.1.0
     hooks:
       - id: mypy
