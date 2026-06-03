@@ -58,6 +58,10 @@ enable-unstable-feature = [
 preview = true
 
 [tool.check-sdist]
+git-only = [
+    ".claude/",  # SEE: https://github.com/henryiii/check-sdist/issues/150
+    ".cursor/",  # SEE: https://github.com/henryiii/check-sdist/issues/150
+]
 sdist-only = ["src/version.py"]
 
 [tool.codespell]
