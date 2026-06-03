@@ -13,3 +13,12 @@ help:	## Show this help.
 		sed -E 's/^([a-zA-Z0-9%_-]+):\s+(\w+)/$(GREEN)\1$(END_COLOR):~\u\2/' | \
 		sed -E 's/(.*)(EX:)(.*)/\1$(YELLOW)\2\3$(END_COLOR)/' | \
 		column -s '~' -t
+
+ruff-preview-sync:	## Sync tool.ruff.lint.extend-select in pyproject.toml to Ruff's preview rules.
+	@trap 'rm -f .ruff-preview.tmp pyproject.toml.tmp' EXIT; \
+	uv run ruff rule --all --output-format=json \
+		| jq -r '.[] | select(.preview == true) | "    \"\(.code)\","' \
+		| sort > .ruff-preview.tmp; \
+	awk '/^extend-select = \[$$/ { print; while ((getline l < ".ruff-preview.tmp") > 0) print l; skip=1; next } skip && /^\]$$/ { print; skip=0; next } skip { next } { print }' pyproject.toml > pyproject.toml.tmp; \
+	mv pyproject.toml.tmp pyproject.toml; \
+	echo "$(GREEN)Synced extend-select to Ruff preview rules$(END_COLOR)"
