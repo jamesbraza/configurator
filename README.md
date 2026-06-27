@@ -46,6 +46,7 @@ Aspirations of this repository:
 - [Helper Scripts](#helper-scripts)
   - [Changing Repos](#changing-repos)
   - [`.gitignore` Creation](#gitignore-creation)
+  - [Better `git log`](#better-git-log)
 
 ---
 
@@ -1127,4 +1128,15 @@ a() {
 curl -s \
   https://raw.githubusercontent.com/github/gitignore/master/{Global/Vim,Global/JetBrains,Global/VisualStudioCode,Global/macOS,Python}.gitignore \
   > .gitignore
+```
+
+### Better `git log`
+
+From <https://coderwall.com/p/euwpig/a-better-git-log>,
+here is a colorized, graphed, one-line-per-commit `git log` alias, invoked as `git lg`.
+
+<!-- pyml disable-num-lines 4 line-length -->
+
+```shell
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
