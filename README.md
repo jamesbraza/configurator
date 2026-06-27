@@ -1048,13 +1048,16 @@ but `nitpick` itself lacked the configurability for adoption here.
 <!-- pyml disable line-length -->
 
 ```shell
+# Try GNU sed, and if not present fall back to sed
+SED_CMD=$(command -v gsed || command -v sed)
+
 pathver() {
     : 'print PATH and VERsion; optionally assert version file matches'
     source=$(type -p "$1")
     if [[ -z $source ]]; then
         source=$(type "$1")
     fi
-    actual_version=$("$1" --version 2>&1 | gsed -En 's/(.+ )?(v?[0-9]+\.[0-9]+\.[^ ]+).*/\2/p')
+    actual_version=$("$1" --version 2>&1 | "$SED_CMD" -En 's/(.+ )?(v?[0-9]+\.[0-9]+\.[^ ]+).*/\2/p')
     echo "$source $actual_version"
 }
 
