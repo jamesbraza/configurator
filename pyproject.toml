@@ -317,6 +317,7 @@ score = false
 min-similarity-lines = 10
 
 [tool.pymarkdown]
+extensions.front-matter.enabled = true  # For AI skill files Markdown
 plugins.line-length.code_block_line_length = 88  # Match ruff line-length
 plugins.line-length.enabled = true
 plugins.line-length.line_length = 120  # Match ruff max-doc-length
