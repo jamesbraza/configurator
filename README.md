@@ -1052,17 +1052,28 @@ but `nitpick` itself lacked the configurability for adoption here.
 SED_CMD=$(command -v gsed || command -v sed)
 
 pathver() {
-    : 'print PATH and VERsion; optionally assert version file matches'
+    : 'print PATH and VERsion; optionally assert version file matches.
+    SEE: https://github.com/biobuddies/helicopyter/blob/de2fa0bb3355f5fecc143d63d507eb7b07325cb7/.biobuddies/includes.bash#L93-L108'
     source=$(type -p "$1")
     if [[ -z $source ]]; then
         source=$(type "$1")
     fi
     actual_version=$("$1" --version 2>&1 | "$SED_CMD" -En 's/(.+ )?(v?[0-9]+\.[0-9]+\.[^ ]+).*/\2/p')
     echo "$source $actual_version"
+    if [[ -f $2 ]]; then
+        expected_version=$(cat "$2")
+        # Tolerate an omitted bugfix version (e.g. .python-version of 3.14 matches 3.14.6),
+        # but require at least major.minor
+        if [[ $actual_version != "$expected_version" && ! ( $expected_version == *.* && $actual_version == "$expected_version".* ) ]]; then
+            echo "ERROR: $source version $actual_version does not match $2 $expected_version"
+            return 1
+        fi
+    fi
 }
 
 a() {
-    : 'Activate virtual environment after changing directory'
+    : 'Activate virtual environment after changing directory.
+    SEE: https://github.com/biobuddies/helicopyter/blob/de2fa0bb3355f5fecc143d63d507eb7b07325cb7/.biobuddies/includes.bash#L110-L154'
 
     if [[ ${1-} ]]; then
         directory=~/code/$1
@@ -1107,11 +1118,6 @@ a() {
     fi
 }
 ```
-
-<!-- pyml enable line-length -->
-
-This was taken from
-<https://github.com/biobuddies/helicopyter/blob/main/.biobuddies/includes.bash>.
 
 ### `.gitignore` Creation
 
