@@ -22,3 +22,7 @@ ruff-preview-sync:	## Sync tool.ruff.lint.extend-select in pyproject.toml to Ruf
 	awk '/^extend-select = \[$$/ { print; while ((getline l < ".ruff-preview.tmp") > 0) print l; skip=1; next } skip && /^\]$$/ { print; skip=0; next } skip { next } { print }' pyproject.toml > pyproject.toml.tmp; \
 	mv pyproject.toml.tmp pyproject.toml; \
 	echo "$(GREEN)Synced extend-select to Ruff preview rules$(END_COLOR)"
+
+skills-sync:	## Regenerate this repo's Claude Code and Cursor skills from src/skills/.
+	rm -rf .claude/skills .cursor/skills  # SEE: .skillshare-manifest.json note in .gitignore
+	skillshare sync

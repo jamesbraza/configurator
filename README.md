@@ -35,6 +35,7 @@ Aspirations of this repository:
   - [Autoformatters](#autoformatters)
   - [Linters](#linters)
   - [Markdown](#markdown)
+  - [AI Engineering](#ai-engineering)
 - [Python Tool Integrations](#python-tool-integrations)
   - [Autoformatters](#autoformatters-1)
   - [Testing](#testing)
@@ -365,6 +366,37 @@ Confirm Markdown links are not dead.
 </td><td>
 
 Slows down `pre-commit` due to link visitation.
+
+</td></tr>
+</table>
+
+### AI Engineering
+
+<table>
+<tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
+<tr><td>
+
+[`skillshare`](https://github.com/runkids/skillshare)
+([docs](https://skillshare.runkids.cc/))
+
+</td><td>
+
+Yes, `>=0.19.15`
+
+</td><td>
+
+Sync agent `SKILL.md` across CLI tools like Claude Code and Cursor
+
+</td><td>
+
+Command line, GitHub Actions.
+
+</td><td>
+
+[`skillshare-hub`](https://github.com/runkids/skillshare-hub)
+is a ready-to-use catalog of skills.
+In [the repo there is a skill](https://github.com/runkids/skillshare/tree/main/skills/skillshare)
+for how to use `skillshare`'s CLI.
 
 </td></tr>
 </table>

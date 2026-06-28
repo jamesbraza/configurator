@@ -1,0 +1,21 @@
+---
+# All paths here are relative paths that resolve from the repo root.
+#
+# yamllint disable rule:line-length
+# yaml-language-server: $schema=https://raw.githubusercontent.com/runkids/skillshare/main/schemas/project-config.schema.json
+# yamllint enable rule:line-length
+sources:
+  skills: src/skills
+targets:
+  # Use `copy` mode over default `merge` mode to decouple ourselves from
+  # Git's `core.symlinks` setting being false, leading to Git checking out the symlinks
+  # as plain text files containing the target path (instead of a working symlink)
+  # and possibly breaking Claude Code or Cursor
+  - name: repo-claude
+    skills:
+      path: .claude/skills
+      mode: copy
+  - name: repo-cursor
+    skills:
+      path: .cursor/skills
+      mode: copy
