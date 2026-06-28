@@ -570,6 +570,7 @@ mypy-init-return = true
 
 [tool.ruff.lint.per-file-ignores]
 "**/tests/*.py" = [
+    "F841",  # Tests can have unused locals
     "N802",  # Tests function names can match class names
     "PLC2701",  # Test can import private names if needed
     "PLR0904",  # Test classes can have many cases
