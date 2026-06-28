@@ -35,6 +35,7 @@ Aspirations of this repository:
   - [Autoformatters](#autoformatters)
   - [Linters](#linters)
   - [Markdown](#markdown)
+  - [AI Engineering](#ai-engineering)
 - [Python Tool Integrations](#python-tool-integrations)
   - [Autoformatters](#autoformatters-1)
   - [Testing](#testing)
@@ -46,6 +47,7 @@ Aspirations of this repository:
 - [Helper Scripts](#helper-scripts)
   - [Changing Repos](#changing-repos)
   - [`.gitignore` Creation](#gitignore-creation)
+  - [Better `git log`](#better-git-log)
 
 ---
 
@@ -364,6 +366,37 @@ Confirm Markdown links are not dead.
 </td><td>
 
 Slows down `pre-commit` due to link visitation.
+
+</td></tr>
+</table>
+
+### AI Engineering
+
+<table>
+<tr><th>Tool</th><th>Used Here?</th><th>Description</th><th>Invocation</th><th>Notes</th></tr>
+<tr><td>
+
+[`skillshare`](https://github.com/runkids/skillshare)
+([docs](https://skillshare.runkids.cc/))
+
+</td><td>
+
+Yes, `>=0.19.15`
+
+</td><td>
+
+Sync agent `SKILL.md` across CLI tools like Claude Code and Cursor
+
+</td><td>
+
+Command line, GitHub Actions.
+
+</td><td>
+
+[`skillshare-hub`](https://github.com/runkids/skillshare-hub)
+is a ready-to-use catalog of skills.
+In [the repo there is a skill](https://github.com/runkids/skillshare/tree/main/skills/skillshare)
+for how to use `skillshare`'s CLI.
 
 </td></tr>
 </table>
@@ -889,18 +922,40 @@ Command line
 
 [`flake8-requirements`](https://github.com/arkq/flake8-requirements)
 
-</td><td>Yes</td><td>
+</td><td>No</td><td>
 
 Checking requirements
 
 </td><td>
 
-`flake8` plugin (CI only)
+`flake8` plugin (CI only for speed)
 
 </td><td>
 
-If invoking `flake8` as part of `pre-commit`,
-run this only in CI because this check isn't relevant for most commits.
+Superseded by `deptry` (see below).
+
+</td></tr>
+<tr><td>
+
+[`deptry`](https://github.com/osprey-oss/deptry)
+([docs](https://deptry.com/))
+
+</td><td>
+
+Yes, `>=0.25`
+
+</td><td>
+
+Checking for unused, missing, and transitive dependencies
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+Superset of `flake8-requirements`'s checks,
+also detecting transitive (DEP003) and misplaced-dev (DEP004) dependencies.
 
 </td></tr>
 <tr><td>
@@ -1048,18 +1103,32 @@ but `nitpick` itself lacked the configurability for adoption here.
 <!-- pyml disable line-length -->
 
 ```shell
+# Try GNU sed, and if not present fall back to sed
+SED_CMD=$(command -v gsed || command -v sed)
+
 pathver() {
-    : 'print PATH and VERsion; optionally assert version file matches'
+    : 'print PATH and VERsion; optionally assert version file matches.
+    SEE: https://github.com/biobuddies/helicopyter/blob/de2fa0bb3355f5fecc143d63d507eb7b07325cb7/.biobuddies/includes.bash#L93-L108'
     source=$(type -p "$1")
     if [[ -z $source ]]; then
         source=$(type "$1")
     fi
-    actual_version=$("$1" --version 2>&1 | gsed -En 's/(.+ )?(v?[0-9]+\.[0-9]+\.[^ ]+).*/\2/p')
+    actual_version=$("$1" --version 2>&1 | "$SED_CMD" -En 's/(.+ )?(v?[0-9]+\.[0-9]+\.[^ ]+).*/\2/p')
     echo "$source $actual_version"
+    if [[ -f ${2-} ]]; then
+        expected_version=$(cat "$2")
+        # Tolerate an omitted bugfix version (e.g. .python-version of 3.14 matches 3.14.6),
+        # but require at least major.minor
+        if [[ $actual_version != "$expected_version" && ! ( $expected_version == *.* && $actual_version == "$expected_version".* ) ]]; then
+            echo "ERROR: $source version $actual_version does not match $2 $expected_version"
+            return 1
+        fi
+    fi
 }
 
 a() {
-    : 'Activate virtual environment after changing directory'
+    : 'Activate virtual environment after changing directory.
+    SEE: https://github.com/biobuddies/helicopyter/blob/de2fa0bb3355f5fecc143d63d507eb7b07325cb7/.biobuddies/includes.bash#L110-L154'
 
     if [[ ${1-} ]]; then
         directory=~/code/$1
@@ -1118,4 +1187,15 @@ This was taken from
 curl -s \
   https://raw.githubusercontent.com/github/gitignore/master/{Global/Vim,Global/JetBrains,Global/VisualStudioCode,Global/macOS,Python}.gitignore \
   > .gitignore
+```
+
+### Better `git log`
+
+From <https://coderwall.com/p/euwpig/a-better-git-log>,
+here is a colorized, graphed, one-line-per-commit `git log` alias, invoked as `git lg`.
+
+<!-- pyml disable-num-lines 4 line-length -->
+
+```shell
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```

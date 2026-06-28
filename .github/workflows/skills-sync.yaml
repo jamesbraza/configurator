@@ -1,0 +1,50 @@
+---
+name: Sync Skills
+
+on: # yamllint disable-line rule:truthy
+  pull_request:
+    paths: ["src/skills/**", ".github/workflows/skills-sync.yaml"]
+  push:
+    branches: ["main"]
+    paths: ["src/skills/**", ".github/workflows/skills-sync.yaml"]
+
+permissions:
+  # NOTE: PRs from forks are intentionally filtered out from Git auto-commits below,
+  # and they get a read-only token by default, so untrusted code can't run in a write context
+  contents: write
+
+concurrency:
+  group: skills-sync-${{ github.ref }}
+  # Cancel older GitHub Actions runs to avoid a race condition where we could
+  # inadvertently have a Git commit containing latest skill versions before an older
+  # skill version when committing in rapid succession
+  cancel-in-progress: true
+
+jobs:
+  skills-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }} # PR branch, so we can commit the mirror back
+          # Matching https://github.com/stefanzweifel/git-auto-commit-action#usage
+          persist-credentials: true
+      - uses: runkids/setup-skillshare@v1
+      - run: make skills-sync
+      - name: Commit the regenerated mirrors back to the PR branch
+        if: github.event_name == 'pull_request' && !github.event.pull_request.head.repo.fork
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "chore: sync Claude Code and Cursor skills from src/skills"
+          file_pattern: |
+            .claude/skills
+            .cursor/skills
+      - name: Verify synchronization
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork
+        run: |
+          if [[ -n "$(git status --porcelain .claude/skills .cursor/skills)" ]]; then
+            echo "::error::skills mirrors out of sync; run 'make skills-sync' and commit."
+            git --no-pager diff .claude/skills .cursor/skills
+            exit 1
+          fi
+          echo "Mirrors are in sync."

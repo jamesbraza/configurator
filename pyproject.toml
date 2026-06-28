@@ -34,7 +34,7 @@ requires-python = ">=3.11"
 dev = [
     "Flake8-pyproject>=1.2",  # For added --toml-config arg
     "coverage[toml]",
-    "flake8-requirements",
+    "deptry>=0.25",  # For optional_dependencies_dev_groups
     "ipython>=8",  # Pin to keep recent
     "mypy>=1.8",  # For addition of mutable-override
     "prek",
@@ -44,6 +44,7 @@ dev = [
     "pytest-xdist",
     "pytest>=9",  # For pytest-subtests upstreaming
     "refurb>=2",
+    "ruff>=0.6",
     "typeguard",
 ]
 
@@ -58,6 +59,11 @@ enable-unstable-feature = [
 preview = true
 
 [tool.check-sdist]
+git-only = [
+    ".claude/",  # SEE: https://github.com/henryiii/check-sdist/issues/150
+    ".cursor/",  # SEE: https://github.com/henryiii/check-sdist/issues/150
+    "src/skills/",  # Skill sources are not shipped in the package
+]
 sdist-only = ["src/version.py"]
 
 [tool.codespell]
@@ -81,6 +87,9 @@ branch = true
 # This will be used if you run `coverage run` with no further arguments
 # This is designed to be invoked from within the test directory
 command_line = "-m pytest"
+
+[tool.deptry]
+optional_dependencies_dev_groups = ["dev"]  # SEE: https://github.com/osprey-oss/deptry/issues/1531
 
 [tool.docformatter]
 black = true
@@ -176,7 +185,7 @@ module = [
     "asyncpg",  # SEE: https://github.com/MagicStack/asyncpg/issues/569
     "cloudpickle",  # SEE: https://github.com/cloudpipe/cloudpickle/issues/541
     "colabfold.*",
-    "datasets",  # SEE: https://github.com/huggingface/datasets/issues/3841
+    "datasets",  # SEE: https://github.com/huggingface/datasets/issues/7390
     "deepspeed.*",  # SEE: https://github.com/microsoft/DeepSpeed/issues/6988
     "dicttoxml",  # SEE: https://github.com/quandyfactory/dicttoxml/issues/106
     "diff_match_patch",  # SEE: https://github.com/diff-match-patch-python/diff-match-patch/issues/15
@@ -186,30 +195,22 @@ module = [
     "factory",  # SEE: https://github.com/FactoryBoy/factory_boy/issues/468
     "fastapi_socketio",  # SEE: https://github.com/pyropy/fastapi-socketio/issues/27
     "firebase_admin",  # SEE: https://github.com/firebase/firebase-admin-python/issues/860
-    "fitz",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/3361
+    "fitz",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/2883
     "fsspec",  # SEE: https://github.com/fsspec/filesystem_spec/issues/625
     "google.*",  # SEE: https://github.com/googleapis/python-genai/issues/61
     "google.cloud.storage",  # SEE: https://github.com/googleapis/python-storage/issues/393
-    "google_crc32c",  # SEE: https://github.com/googleapis/python-crc32c/pull/211
     "grobid_client.*",  # SEE: https://github.com/kermitt2/grobid_client_python/issues/71
-    "huggingface_hub.*",  # SEE: https://github.com/huggingface/huggingface_hub/issues/1662
     "jsonschema.*",
     "kubernetes.*",  # SEE: https://github.com/kubernetes-client/python/issues/2033
-    "kubernetes_asyncio.*",  # SEE: https://github.com/tomplus/kubernetes_asyncio/issues/261
-    "lighteval.*",  # SEE: https://github.com/huggingface/lighteval/issues/749
     "litellm",  # SEE: https://github.com/BerriAI/litellm/issues/825
     "mygene",  # SEE: https://github.com/biothings/mygene.py/issues/28
-    "networkx",  # SEE: https://github.com/networkx/networkx/issues/3988
     "newrelic.*",  # SEE: https://github.com/newrelic/newrelic-python-agent/issues/767
     "openreview",  # SEE: https://github.com/openreview/openreview-py/issues/2551
     "plotly.*",  # SEE: https://github.com/plotly/plotly.py/issues/4927
     "pybtex.*",  # SEE: https://bitbucket.org/pybtex-devs/pybtex/issues/141/type-annotations
-    "pymupdf",  # SEE: https://github.com/pymupdf/PyMuPDF/issues/2883
     "pypdfium2",  # SEE: https://github.com/pypdfium2-team/pypdfium2/issues/367
-    "pyzotero",  # SEE: https://github.com/urschrei/pyzotero/issues/110
     "s3fs",  # SEE: https://github.com/fsspec/s3fs/issues/383
     "sendgrid.*",
-    "setuptools_scm",  # SEE: https://github.com/pypa/setuptools_scm/issues/501
     "socketio.*",  # SEE: https://github.com/miguelgrinberg/python-socketio/issues/1276
     "sweagent.*",
     "swebench.*",
@@ -312,6 +313,7 @@ score = false
 min-similarity-lines = 10
 
 [tool.pymarkdown]
+extensions.front-matter.enabled = true  # For AI skill files Markdown
 plugins.line-length.code_block_line_length = 88  # Match ruff line-length
 plugins.line-length.enabled = true
 plugins.line-length.line_length = 120  # Match ruff max-doc-length
@@ -358,13 +360,21 @@ preview = true
 [tool.ruff.lint]
 explicit-preview-rules = true
 extend-select = [
+    "AIR003",
+    "AIR004",
+    "AIR201",
+    "AIR202",
     "AIR303",
+    "AIR304",
     "AIR321",
+    "ASYNC119",
+    "B043",
     "B901",
     "B903",
     "B909",
     "CPY001",
     "D420",
+    "D421",
     "DOC102",
     "DOC201",
     "DOC202",
@@ -450,6 +460,7 @@ extend-select = [
     "PLR6201",
     "PLR6301",
     "PLW0244",
+    "PLW0717",
     "PLW1514",
     "PLW3201",
     "PT029",
@@ -461,6 +472,7 @@ extend-select = [
     "RUF039",
     "RUF045",
     "RUF047",
+    "RUF050",
     "RUF052",
     "RUF054",
     "RUF055",
@@ -472,7 +484,27 @@ extend-select = [
     "RUF068",
     "RUF069",
     "RUF070",
+    "RUF071",
+    "RUF072",
+    "RUF073",
+    "RUF074",
+    "RUF075",
+    "S401",
+    "S402",
+    "S403",
+    "S404",
+    "S405",
+    "S406",
+    "S407",
+    "S408",
+    "S409",
+    "S411",
+    "S412",
+    "S413",
+    "S415",
     "TC008",
+    "TID254",
+    "TID255",
     "W391",
 ]
 external = [
@@ -508,6 +540,8 @@ ignore = [
     "INP001",  # Can use namespace packages
     "ISC001",  # For ruff format compatibility
     "PTH",  # Overly pedantic
+    "RUF067",  # Don't care to disallow code in __init__.py
+    "S4",  # Don't care to security audit everything
     "SLF001",  # Overly pedantic
     "T201",  # Overly pedantic
     "TC001",  # TC001, TC002, TC003: don't care to enforce type checking blocks
@@ -541,6 +575,7 @@ mypy-init-return = true
     "PLR0904",  # Test classes can have many cases
     "PLR2004",  # Tests can have magic values
     "PLR6301",  # Test classes can ignore self
+    "RUF069",  # Tests can have float equality
     "S101",  # Tests can have assertions
 ]
 

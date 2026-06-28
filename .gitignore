@@ -297,3 +297,15 @@ cython_debug/
 
 # Version files made by setuptools_scm
 **/version.py
+
+# skillshare writes a per-run bookkeeping manifest JSON (.skillshare-manifest.json)
+# into each generated mirror (.claude/skills/, .cursor/skills/). It is skillshare's
+# canonical record of which skills are "managed" in a target. Keep it out of Git because:
+# 1. It records timestamps and source modification times, so its contents change
+#    on every sync. Committing the JSON would produce a meaningless diff on each run.
+# 2. On a fresh Git checkout, the JSON files are absent (because they're gitignored here).
+#    Thus, skillshare cannot infer the committed mirror is "managed" rather than
+#    locally authored, which means they're skipped by `skillshare sync`.
+# To work around the edge case item 2, make the 'fresh Git clone' behavior the normal
+# case by manually deleting the generated mirror folders before invoking `skillshare sync`
+**/.skillshare-manifest.json
