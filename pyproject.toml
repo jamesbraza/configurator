@@ -62,6 +62,7 @@ preview = true
 git-only = [
     ".claude/",  # SEE: https://github.com/henryiii/check-sdist/issues/150
     ".cursor/",  # SEE: https://github.com/henryiii/check-sdist/issues/150
+    "src/skills/",  # Skill sources are not shipped in the package
 ]
 sdist-only = ["src/version.py"]
 

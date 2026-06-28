@@ -1,0 +1,5 @@
+# setuptools-scm ships every Git-tracked file in the sdist, so these Git-only paths
+# must be pruned here to actually keep unintended files out
+prune .claude
+prune .cursor
+prune src/skills
