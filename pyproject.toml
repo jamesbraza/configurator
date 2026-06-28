@@ -34,7 +34,7 @@ requires-python = ">=3.11"
 dev = [
     "Flake8-pyproject>=1.2",  # For added --toml-config arg
     "coverage[toml]",
-    "flake8-requirements",
+    "deptry>=0.25",  # For optional_dependencies_dev_groups
     "ipython>=8",  # Pin to keep recent
     "mypy>=1.8",  # For addition of mutable-override
     "prek",
@@ -87,6 +87,9 @@ branch = true
 # This will be used if you run `coverage run` with no further arguments
 # This is designed to be invoked from within the test directory
 command_line = "-m pytest"
+
+[tool.deptry]
+optional_dependencies_dev_groups = ["dev"]  # SEE: https://github.com/osprey-oss/deptry/issues/1531
 
 [tool.docformatter]
 black = true

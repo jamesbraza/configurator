@@ -922,18 +922,40 @@ Command line
 
 [`flake8-requirements`](https://github.com/arkq/flake8-requirements)
 
-</td><td>Yes</td><td>
+</td><td>No</td><td>
 
 Checking requirements
 
 </td><td>
 
-`flake8` plugin (CI only)
+`flake8` plugin (CI only for speed)
 
 </td><td>
 
-If invoking `flake8` as part of `pre-commit`,
-run this only in CI because this check isn't relevant for most commits.
+Superseded by `deptry` (see below).
+
+</td></tr>
+<tr><td>
+
+[`deptry`](https://github.com/osprey-oss/deptry)
+([docs](https://deptry.com/))
+
+</td><td>
+
+Yes, `>=0.25`
+
+</td><td>
+
+Checking for unused, missing, and transitive dependencies
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+Superset of `flake8-requirements`'s checks,
+also detecting transitive (DEP003) and misplaced-dev (DEP004) dependencies.
 
 </td></tr>
 <tr><td>
