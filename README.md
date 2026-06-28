@@ -1060,7 +1060,7 @@ pathver() {
     fi
     actual_version=$("$1" --version 2>&1 | "$SED_CMD" -En 's/(.+ )?(v?[0-9]+\.[0-9]+\.[^ ]+).*/\2/p')
     echo "$source $actual_version"
-    if [[ -f $2 ]]; then
+    if [[ -f ${2-} ]]; then
         expected_version=$(cat "$2")
         # Tolerate an omitted bugfix version (e.g. .python-version of 3.14 matches 3.14.6),
         # but require at least major.minor
