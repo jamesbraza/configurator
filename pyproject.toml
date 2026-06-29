@@ -1,7 +1,7 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-# SEE: https://github.com/pypa/setuptools_scm#pyprojecttoml-usage
-requires = ["setuptools>=64", "setuptools_scm>=8"]
+# SEE: https://setuptools-scm.readthedocs.io/en/latest/usage/#explicit-configuration-full-control
+requires = ["setuptools-scm>=8", "setuptools>=80"]
 
 [dependency-groups]
 dev = ["configurator[dev]"]
