@@ -13,8 +13,8 @@ SCHEMA_URL = (
     "https://raw.githubusercontent.com/henryiii/validate-pyproject-schema-store/"
     "main/src/validate_pyproject_schema_store/resources/ruff.schema.json"
 )
-# Matches rule codes (e.g. "E501") and category prefixes (e.g. "ANN", "PTH").
-CODE_RE = re.compile(r'"([A-Z]{1,4}[0-9]{0,4})"')
+# Matches rule codes (e.g. "E501", "ASYNC119") and category prefixes (e.g. "ANN", "PTH").
+CODE_RE = re.compile(r'"([A-Z]{1,5}[0-9]{0,4})"')
 CHECKED_FIELDS = ("select", "extend-select", "ignore", "extend-ignore", "unfixable")
 
 
