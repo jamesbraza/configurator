@@ -217,6 +217,30 @@ Autoformatting templates like Jinja, Nunjucks, etc.
 </td><td>
 
 </td></tr>
+<tr><td>
+
+[`bibtex-tidy`](https://github.com/FlamingTempura/bibtex-tidy)
+
+</td><td>
+
+No
+
+</td><td>
+
+Autoformatting BibTeX files
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+Have the hook opt into
+`args: [--sort=key, --duplicates=key]`
+to sort entries by citation key
+and warn on entries sharing a citation key.
+
+</td></tr>
 </table>
 
 ### Linters
