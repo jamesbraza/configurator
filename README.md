@@ -1127,8 +1127,8 @@ but `nitpick` itself lacked the configurability for adoption here.
 <!-- pyml disable line-length -->
 
 ```shell
-# Try GNU sed, and if not present fall back to sed
-SED_CMD=$(command -v gsed || command -v sed)
+# Try GNU sed if on Mac, otherwise falling back to sed
+[[ $OSTYPE == darwin* ]] && SED_CMD=$(command -v gsed) || SED_CMD=$(command -v sed)
 
 pathver() {
     : 'print PATH and VERsion; optionally assert version file matches.
