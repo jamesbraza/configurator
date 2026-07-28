@@ -217,6 +217,30 @@ Autoformatting templates like Jinja, Nunjucks, etc.
 </td><td>
 
 </td></tr>
+<tr><td>
+
+[`bibtex-tidy`](https://github.com/FlamingTempura/bibtex-tidy)
+
+</td><td>
+
+No
+
+</td><td>
+
+Autoformatting BibTeX files
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td>
+
+Have the hook opt into
+`args: [--sort=key, --duplicates=key]`
+to sort entries by citation key
+and warn on entries sharing a citation key.
+
+</td></tr>
 </table>
 
 ### Linters
@@ -1103,8 +1127,8 @@ but `nitpick` itself lacked the configurability for adoption here.
 <!-- pyml disable line-length -->
 
 ```shell
-# Try GNU sed, and if not present fall back to sed
-SED_CMD=$(command -v gsed || command -v sed)
+# Try GNU sed if on Mac, otherwise falling back to sed
+[[ $OSTYPE == darwin* ]] && SED_CMD=$(command -v gsed) || SED_CMD=$(command -v sed)
 
 pathver() {
     : 'print PATH and VERsion; optionally assert version file matches.

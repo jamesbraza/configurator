@@ -2,7 +2,7 @@ import filecmp
 import importlib.metadata
 import os
 import pathlib
-import subprocess
+import subprocess  # noqa: S404
 import tempfile
 
 import pytest
@@ -45,7 +45,7 @@ def test_pre_post_pre_commit() -> None:
         )
 
     result = subprocess.run(
-        ("prek", "run", "--all-files"),
+        ("prek", "run", "--all-files"),  # noqa: S607
         stdout=subprocess.PIPE,
         check=False,
         cwd=REPO_ROOT,
@@ -61,12 +61,17 @@ def test_pre_post_pre_commit() -> None:
         assert filecmp.cmp(PRE_TOOLS_PATH, POST_TOOLS_PATH, shallow=False)
     finally:
         # Check out the file to its original pre-test state
-        subprocess.check_call(("git", "checkout", str(PRE_TOOLS_PATH)))  # noqa: S603
+        subprocess.check_call(  # noqa: S603
+            ("git", "checkout", str(PRE_TOOLS_PATH))  # noqa: S607
+        )
 
 
 def test_refurb() -> None:
     result = subprocess.run(
-        ("refurb", "src", "tests"), capture_output=True, check=False, cwd=REPO_ROOT
+        ("refurb", "src", "tests"),  # noqa: S607
+        capture_output=True,
+        check=False,
+        cwd=REPO_ROOT,
     )
     assert not result.stdout, "Unexpected refurb stdout"
     assert not result.stderr, "Unexpected refurb stderr"
@@ -75,7 +80,7 @@ def test_refurb() -> None:
 def test_pylint() -> None:
     with tempfile.NamedTemporaryFile() as stdout_f:
         result = subprocess.run(
-            ("pylint", "src", "tests"),
+            ("pylint", "src", "tests"),  # noqa: S607
             stderr=subprocess.PIPE,
             stdout=stdout_f,
             check=False,
