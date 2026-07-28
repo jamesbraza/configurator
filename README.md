@@ -1132,10 +1132,14 @@ but `nitpick` itself lacked the configurability for adoption here.
 
 pathver() {
     : 'print PATH and VERsion; optionally assert version file matches.
-    SEE: https://github.com/biobuddies/helicopyter/blob/c099ea7ecd2099b3c4d8fbfe2834323f08223f01/.biobuddies/includes.bash#L93-L109'
-    source=$(type -p "$1")
-    if [[ -z $source ]]; then
-        source=$(type "$1")
+    SEE: https://github.com/biobuddies/helicopyter/blob/893100c6a8c3660e1ed5805db4acb300b6530f5f/.biobuddies/includes.bash#L93-L113'
+    # Use POSIX command -v/-V so this function can be copied into a ~/.zshrc,
+    # as in cases where zsh aliases `type` to `whence -v`,
+    # which prints "python is /path" instead of "/path"
+    source=$(command -v "$1")
+    if [[ $source != /* ]]; then  # Not an absolute path (e.g. an alias or missing)
+        # We use 2>&1 because bash (unlike zsh) prints "not found" to stderr
+        source=$(command -V "$1" 2>&1)
     fi
     actual_version=$("$1" --version 2>&1 | "$SED_CMD" -En 's/(.+ )?(v?[0-9]+\.[0-9]+\.[^ ]+).*/\2/p')
     echo "$source $actual_version"
