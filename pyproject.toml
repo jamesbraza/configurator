@@ -541,6 +541,7 @@ ignore = [
     "ISC001",  # For ruff format compatibility
     "PTH",  # Overly pedantic
     "RUF067",  # Don't care to disallow code in __init__.py
+    "RUF105",  # Ignore codes being respected across tools is useful
     "S4",  # Don't care to security audit everything
     "SLF001",  # Overly pedantic
     "T201",  # Overly pedantic
