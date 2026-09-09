@@ -2,7 +2,7 @@ import filecmp
 import importlib.metadata
 import os
 import pathlib
-import subprocess  # noqa: S404
+import subprocess
 import tempfile
 
 import pytest
@@ -24,7 +24,7 @@ def get_git_changes(include_untracked: bool = True) -> list[str]:
 REPO_ROOT = TESTS_DIR.parent
 SRC_DIR = REPO_ROOT / "src"
 PRE_TOOLS_PATH = SRC_DIR / "pre_tools.py"
-POST_TOOLS_PATH = SRC_DIR / "pre_tools.py"
+POST_TOOLS_PATH = SRC_DIR / "post_tools.py"
 
 
 @pytest.mark.filesystem
