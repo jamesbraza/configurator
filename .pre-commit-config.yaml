@@ -19,6 +19,10 @@ repos:
     rev: v3.9.6
     hooks:
       - id: prettier
+  - repo: https://github.com/JohnnyMorganz/StyLua
+    rev: v2.5.2
+    hooks:
+      - id: stylua-github
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:

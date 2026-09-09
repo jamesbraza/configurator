@@ -1,0 +1,5 @@
+call_parentheses = "None"  # Match WezTerm docs style, e.g. require 'wezterm'
+column_width = 88  # Match black
+indent_type = "Spaces"
+indent_width = 2  # Match WezTerm docs style
+quote_style = "AutoPreferSingle"  # Match WezTerm docs style, e.g. require 'wezterm'
