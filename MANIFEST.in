@@ -3,3 +3,4 @@
 prune .claude
 prune .cursor
 prune src/skills
+prune tools

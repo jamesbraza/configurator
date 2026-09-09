@@ -1,0 +1,26 @@
+[include]
+	# For the zebra-dark theme below; downloaded per the README's Tool Configurations
+	path = ~/.config/git/themes.gitconfig
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	dark = true
+	# Not built-in to Git, SEE: https://dandavison.github.io/delta/color-moved-support.html
+	features = zebra-dark
+[merge]
+	conflictStyle = zdiff3
+[alias]
+	# SEE: https://coderwall.com/p/euwpig/a-better-git-log
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit
+[diff]
+	algorithm = histogram
+	colorMoved = zebra
+[pull]
+	rebase = true
+[push]
+	default = current
+[advice]
+	skippedCherryPicks = false
