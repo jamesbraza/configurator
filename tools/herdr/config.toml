@@ -1,0 +1,19 @@
+# The herdr-automatic-rename README suggests binding its `reset` action as a
+# plugin_action but names no key, so alt+shift+r is our pick. Inert without the plugin.
+
+[[keys.command]]
+command = "herdr-automatic-rename.reset"
+description = "re-adopt hand-renamed tab"
+key = "alt+shift+r"
+type = "plugin_action"
+
+[ui]
+confirm_close = false
+# SEE: https://github.com/qu8n/herdr-automatic-rename#turn-off-herdrs-new-tab-name-prompt
+prompt_new_tab_name = false
+
+[ui.sound]
+enabled = false
+
+[ui.toast.clipboard]
+enabled = false

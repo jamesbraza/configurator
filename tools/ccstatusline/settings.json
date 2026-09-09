@@ -1,0 +1,76 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "1",
+        "type": "model",
+        "rawValue": true
+      },
+      {
+        "id": "2",
+        "type": "fable-weekly-usage",
+        "backgroundColor": "bgBrightMagenta",
+        "rawValue": true
+      },
+      {
+        "id": "3",
+        "type": "context-window",
+        "rawValue": true
+      },
+      {
+        "id": "4",
+        "type": "thinking-effort",
+        "rawValue": true
+      },
+      {
+        "id": "5",
+        "type": "context-length"
+      },
+      {
+        "id": "6",
+        "type": "compaction-counter"
+      }
+    ],
+    [
+      {
+        "id": "7",
+        "type": "current-working-dir",
+        "rawValue": true
+      },
+      {
+        "id": "8",
+        "type": "git-branch"
+      },
+      {
+        "id": "9",
+        "type": "git-changes"
+      },
+      {
+        "id": "10",
+        "type": "tokens-total"
+      },
+      {
+        "id": "11",
+        "type": "session-cost",
+        "rawValue": true
+      },
+      {
+        "id": "12",
+        "type": "session-name",
+        "rawValue": true
+      },
+      {
+        "id": "13",
+        "type": "claude-session-id",
+        "rawValue": true
+      }
+    ],
+    []
+  ],
+  "defaultPadding": " ",
+  "powerline": {
+    "enabled": true,
+    "theme": "nord-aurora"
+  }
+}

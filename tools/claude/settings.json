@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "defaultMode": "bypassPermissions"
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "effortLevel": "high",
+  "theme": "dark",
+  "editorMode": "vim"
+}
