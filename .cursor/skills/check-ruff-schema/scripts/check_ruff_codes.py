@@ -15,7 +15,14 @@ SCHEMA_URL = (
 )
 # Matches rule codes (e.g. "E501", "ASYNC119") and category prefixes (e.g. "ANN", "PTH").
 CODE_RE = re.compile(r'"([A-Z]{1,5}[0-9]{0,4})"')
-CHECKED_FIELDS = ("select", "extend-select", "ignore", "extend-ignore", "unfixable")
+CHECKED_GLOBAL_FIELDS = (
+    "select",
+    "extend-select",
+    "ignore",
+    "extend-ignore",
+    "unfixable",
+)
+CHECKED_PER_FILE_FIELDS = ("per-file-ignores", "extend-per-file-ignores")
 
 
 def fetch_schema_codes(url: str = SCHEMA_URL) -> set[str]:
@@ -28,7 +35,11 @@ def load_pyproject_codes(path: Path) -> dict[str, list[str]]:
     with path.open("rb") as f:
         data = tomllib.load(f)
     lint = data.get("tool", {}).get("ruff", {}).get("lint", {})
-    return {field: list(lint.get(field, [])) for field in CHECKED_FIELDS}
+    codes = {field: list(lint.get(field, [])) for field in CHECKED_GLOBAL_FIELDS}
+    for field in CHECKED_PER_FILE_FIELDS:
+        for glob, glob_codes in lint.get(field, {}).items():
+            codes[f'{field}["{glob}"]'] = list(glob_codes)
+    return codes
 
 
 def main() -> int:

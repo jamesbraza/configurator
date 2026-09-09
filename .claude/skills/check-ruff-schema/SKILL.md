@@ -16,8 +16,9 @@ the whole `[tool.ruff.lint]` section to fail validation with an unhelpful error 
 > `tool.ruff.lint` cannot be validated by any definition
 
 This skill pinpoints which specific Ruff codes are the culprit by diffing the
-project's `extend-select` / `select` / `ignore` / `extend-ignore` /
-`unfixable` lists against the `validate-pyproject-schema-store` schema's enum.
+project's `extend-select` / `select` / `ignore` / `extend-ignore`
+/ `unfixable` / `per-file-ignores` / `extend-per-file-ignores`
+lists against the `validate-pyproject-schema-store` schema's enum.
 
 ## When to run
 
