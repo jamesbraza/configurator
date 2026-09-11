@@ -9,7 +9,7 @@ type = "plugin_action"
 
 [ui]
 confirm_close = false
-# SEE: https://github.com/qu8n/herdr-automatic-rename#turn-off-herdrs-new-tab-name-prompt
+# SEE: https://github.com/qu8n/herdr-automatic-rename#recommended-herdr-configs
 prompt_new_tab_name = false
 
 [ui.sound]
