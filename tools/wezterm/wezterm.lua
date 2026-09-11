@@ -12,7 +12,7 @@
 --    session. If herdr exits nonzero, the tab prints the exit status and drops
 --    into an interactive shell instead of closing. Further sessions are opened
 --    by hand with `herdr --session <name>`. On Windows the tab spawns inside
---    the first WSL distro, where herdr and zsh live.
+--    the default WSL distro (skipping Docker Desktop's), where herdr and zsh live.
 --
 -- 2. Label every WezTerm tab with its jump number (Cmd-N on macOS,
 --    Ctrl+Shift+N elsewhere), and label herdr tabs with the herdr *session*
@@ -52,14 +52,18 @@ local SHELL = 'zsh'
 local config = wezterm.config_builder()
 
 -- Domain herdr tabs spawn into. nil means WezTerm's local domain. On Windows,
--- herdr runs inside WSL, so pick the first installed distro.
+-- herdr runs inside WSL: take the first distro (the WSL default) that is not
+-- Docker Desktop's internal one, which has no zsh or herdr.
 local herdr_domain = nil
 if is_windows then
-  local wsl = wezterm.default_wsl_domains()
-  if #wsl > 0 then
-    herdr_domain = wsl[1].name -- e.g. 'WSL:Ubuntu'
-    config.default_domain = herdr_domain -- new tabs land in WSL too
-  else
+  for _, dom in ipairs(wezterm.default_wsl_domains()) do
+    if not dom.distribution:match '^docker%-desktop' then
+      herdr_domain = dom.name -- e.g. 'WSL:Ubuntu'
+      config.default_domain = herdr_domain -- new tabs land in WSL too
+      break
+    end
+  end
+  if not herdr_domain then
     wezterm.log_error 'herdr tabs: no WSL distribution found'
   end
 end
