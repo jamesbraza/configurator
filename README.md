@@ -524,7 +524,7 @@ See [Tool Configurations](#tool-configurations).
 The config opens a `herdr` tab on startup,
 labels tabs `[N] 🐑 session`,
 guards the copy key from clobbering `herdr`'s copy-on-select,
-and on Windows runs `herdr` inside the first WSL distro.
+and on Windows runs `herdr` inside the default WSL distro (skipping Docker Desktop's).
 
 </td></tr>
 <tr><td>
