@@ -147,5 +147,17 @@ config.keys = { { key = 'c', mods = 'CTRL|SHIFT', action = guarded_copy } }
 if is_mac then
   table.insert(config.keys, { key = 'c', mods = 'CMD', action = guarded_copy })
 end
+if is_windows then
+  -- On Windows every pane goes through ConPTY, which drops the modifyOtherKeys /
+  -- kitty keyboard negotiation that lets apps tell Shift+Enter apart from Enter.
+  -- Send Ctrl+J instead: Claude Code treats it as "insert newline" in any
+  -- terminal, and it is harmless elsewhere (accept-line in shells, newline in
+  -- vim insert mode). Not needed on macOS/Linux, where WezTerm handles the
+  -- negotiation natively and Shift+Enter reaches Claude Code as Shift+Enter.
+  table.insert(
+    config.keys,
+    { key = 'Enter', mods = 'SHIFT', action = wezterm.action.SendString '\n' }
+  )
+end
 
 return config
