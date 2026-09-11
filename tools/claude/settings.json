@@ -5,5 +5,8 @@
   "skipDangerousModePermissionPrompt": true,
   "effortLevel": "high",
   "theme": "dark",
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "attribution": {
+    "sessionUrl": false
+  }
 }
