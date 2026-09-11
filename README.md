@@ -524,7 +524,10 @@ See [Tool Configurations](#tool-configurations).
 The config opens a `herdr` tab on startup,
 labels tabs `[N] 🐑 session`,
 guards the copy key from clobbering `herdr`'s copy-on-select,
-and on Windows runs `herdr` inside the default WSL distro (skipping Docker Desktop's).
+on Windows runs `herdr` inside the default WSL distro (skipping Docker Desktop's),
+and on Windows binds Shift+Enter to send Ctrl+J
+so Claude Code inserts a newline
+(ConPTY drops the keyboard-protocol negotiation that lets Claude Code tell Shift+Enter from Enter; macOS needs nothing).
 
 </td></tr>
 <tr><td>
@@ -1290,6 +1293,12 @@ to be set per machine.
 
 Note the Claude Code settings set `permissions.defaultMode` to `bypassPermissions`,
 turning off permission prompts.
+The settings also set `tui` to `default`,
+which Claude Code prints into normal terminal scrollback and never touches the mouse.
+Claude Code's other option, `fullscreen`, takes over the pane like `vim` and turns on terminal mouse reporting,
+so `herdr` forwards every click to Claude Code instead of selecting text:
+clicks answer Claude Code's questions and `herdr`'s copy-on-select stops working,
+which is unwanted when trying to copy part of a question for follow-on discussion.
 
 Per-machine prerequisites, in order:
 
