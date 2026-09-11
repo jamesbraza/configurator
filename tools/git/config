@@ -3,6 +3,8 @@
 	path = ~/.config/git/themes.gitconfig
 [core]
 	pager = delta
+	# Ensure vim is used for amending commits, otherwise default is nano on Debian
+	editor = vim
 [interactive]
 	diffFilter = delta --color-only
 [delta]
