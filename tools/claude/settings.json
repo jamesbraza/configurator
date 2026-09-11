@@ -8,5 +8,6 @@
   "editorMode": "vim",
   "attribution": {
     "sessionUrl": false
-  }
+  },
+  "tui": "default"
 }
