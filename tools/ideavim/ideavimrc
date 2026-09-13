@@ -1,0 +1,6 @@
+" Briefly highlight yanked text via IdeaVim's bundled vim-highlightedyank port
+" (IdeaVim-only; upstream Vim needs the plugin)
+set highlightedyank
+
+" Yank/delete copy to the system clipboard; put (`p`) pastes from it
+set clipboard+=unnamed
