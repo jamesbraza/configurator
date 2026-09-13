@@ -12,6 +12,11 @@
 	dark = true
 	# Not built-in to Git, SEE: https://dandavison.github.io/delta/color-moved-support.html
 	features = zebra-dark
+	# Explicit pager args replace delta's own less defaults (-R, -F), so restate them
+	# SEE: https://github.com/dandavison/delta/blob/0.19.2/src/utils/bat/output.rs#L174-L208
+	# Add --quiet: disable bell noise when scrolling past the top/bottom of a diff, it's too disturbing at night
+	# SEE: https://github.com/dandavison/delta/issues/2234
+	pager = less --RAW-CONTROL-CHARS --quit-if-one-screen --quiet
 [merge]
 	conflictStyle = zdiff3
 [alias]
