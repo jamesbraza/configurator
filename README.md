@@ -1290,6 +1290,7 @@ to be set per machine.
 | ccstatusline | `tools/ccstatusline/settings.json` | `~/.config/ccstatusline/settings.json` (WSL on Windows)               | `installation` block, local install metadata; settings equal to ccstatusline's defaults are omitted             |
 | Claude Code  | `tools/claude/settings.json`       | `~/.claude/settings.json` (WSL on Windows)                            | `model` and `permissions.deny`; `hooks` and `statusLine` are written by `herdr`'s and ccstatusline's installers |
 | `git`        | `tools/git/config`                 | `~/.gitconfig` (Windows host and WSL each)                            | `[user]` name and email                                                                                         |
+| IdeaVim      | `tools/ideavim/ideavimrc`          | `~/.ideavimrc` (Windows host: `%USERPROFILE%\.ideavimrc`)             | None; the plugins it enables are bundled with IdeaVim                                                           |
 
 Note the Claude Code settings set `permissions.defaultMode` to `bypassPermissions`,
 turning off permission prompts.
@@ -1305,7 +1306,7 @@ Per-machine prerequisites, in order:
 1. Install [MesloLGS NF](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k)
    on the host (Windows itself, not WSL).
 2. Install `zsh`, `herdr`, [`delta`](https://github.com/dandavison/delta),
-   `atuin`, and [`bun`](https://bun.sh).
+   `atuin`, [`bun`](https://bun.sh), and the IdeaVim plugin in PyCharm.
 3. Copy the tracked files to the paths above.
 4. Download delta's themes, which define `zebra-dark`:
 
