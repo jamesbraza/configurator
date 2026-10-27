@@ -45,7 +45,7 @@ repos:
       - id: docformatter
         additional_dependencies: [".[tomli]"]
   - repo: https://github.com/srstevenson/nb-clean
-    rev: 4.0.1
+    rev: v5.0.0
     hooks:
       - id: nb-clean
         args: [--preserve-cell-outputs, --remove-empty-cells]
