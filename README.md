@@ -588,7 +588,8 @@ Shell history search and sync
 
 </td><td>
 
-`eval "$(atuin init zsh)"` in `~/.zshrc`
+`eval "$(atuin init zsh)"` in `~/.zshrc`,
+and `atuin hook install claude-code`
 
 </td><td>
 
@@ -1301,14 +1302,14 @@ but `nitpick` itself lacked the configurability for adoption here.
 Settings that do not propagate between machines are left out and listed here,
 to be set per machine.
 
-| Tool         | Repo path                          | Copy to                                                               | Left out, set per machine                                                                                       |
-| ------------ | ---------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| WezTerm      | `tools/wezterm/`                   | `~/.config/wezterm/` (Windows host: `%USERPROFILE%\.config\wezterm\`) | Startup session list: the tracked file opens `herdr`'s default session                                          |
-| `herdr`      | `tools/herdr/config.toml`          | `~/.config/herdr/config.toml` (WSL on Windows)                        | `onboarding`, which `herdr` writes after its first-run wizard; plugin, session, and log state                   |
-| ccstatusline | `tools/ccstatusline/settings.json` | `~/.config/ccstatusline/settings.json` (WSL on Windows)               | `installation` block, local install metadata; settings equal to ccstatusline's defaults are omitted             |
-| Claude Code  | `tools/claude/settings.json`       | `~/.claude/settings.json` (WSL on Windows)                            | `model` and `permissions.deny`; `hooks` and `statusLine` are written by `herdr`'s and ccstatusline's installers |
-| `git`        | `tools/git/config`                 | `~/.gitconfig` (Windows host and WSL each)                            | `[user]` name and email                                                                                         |
-| IdeaVim      | `tools/ideavim/ideavimrc`          | `~/.ideavimrc` (Windows host: `%USERPROFILE%\.ideavimrc`)             | None; the plugins it enables are bundled with IdeaVim                                                           |
+| Tool         | Repo path                          | Copy to                                                               | Left out, set per machine                                                                                                                                                                                                                          |
+| ------------ | ---------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| WezTerm      | `tools/wezterm/`                   | `~/.config/wezterm/` (Windows host: `%USERPROFILE%\.config\wezterm\`) | Startup session list: the tracked file opens `herdr`'s default session                                                                                                                                                                             |
+| `herdr`      | `tools/herdr/config.toml`          | `~/.config/herdr/config.toml` (WSL on Windows)                        | `onboarding`, which `herdr` writes after its first-run wizard; plugin, session, and log state                                                                                                                                                      |
+| ccstatusline | `tools/ccstatusline/settings.json` | `~/.config/ccstatusline/settings.json` (WSL on Windows)               | `installation` block, local install metadata; settings equal to ccstatusline's defaults are omitted                                                                                                                                                |
+| Claude Code  | `tools/claude/settings.json`       | `~/.claude/settings.json` (WSL on Windows)                            | `hooks`, written by `herdr integration install claude` (`SessionStart`) and `atuin hook install claude-code` (`PreToolUse`, `PostToolUse`, `PostToolUseFailure`); `statusLine`, written by `bunx -y ccstatusline@latest`'s "Pinned global install" |
+| `git`        | `tools/git/config`                 | `~/.gitconfig` (Windows host and WSL each)                            | `[user]` name and email                                                                                                                                                                                                                            |
+| IdeaVim      | `tools/ideavim/ideavimrc`          | `~/.ideavimrc` (Windows host: `%USERPROFILE%\.ideavimrc`)             | None; the plugins it enables are bundled with IdeaVim                                                                                                                                                                                              |
 
 Note the Claude Code settings set `permissions.defaultMode` to `bypassPermissions`,
 turning off permission prompts.
@@ -1340,6 +1341,8 @@ Per-machine prerequisites, in order:
    which writes `statusLine` into Claude Code's settings.
 8. `herdr integration install claude`, after copying Claude Code's settings,
    so its `SessionStart` hook is appended rather than overwritten.
+9. `atuin hook install claude-code`, also after copying Claude Code's settings,
+   so its `Bash` hooks recording Claude Code's commands aren't overwritten.
 
 Claude Code skills are managed by `skillshare` and not tracked here.
 
