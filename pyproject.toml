@@ -8,17 +8,17 @@ dev = ["configurator[dev]"]
 
 [project]
 authors = [
-    {name = "James Braza"},
+    { name = "James Braza" },
 ]
 # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
 classifiers = [
     "Intended Audience :: Developers",
+    "Programming Language :: Python",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
-    "Programming Language :: Python",
     "Topic :: Software Development",
 ]
 dynamic = [
@@ -587,7 +587,7 @@ max-doc-length = 97  # Match line-length
 convention = "google"
 
 [tool.setuptools]
-package-dir = {"configurator" = "src"}
+package-dir = { "configurator" = "src" }
 
 [tool.setuptools_scm]
 version_file = "src/version.py"
