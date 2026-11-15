@@ -145,7 +145,7 @@ Configure to use four space indent to match [Python PEP 8](https://peps.python.o
 
 </td><td>
 
-Yes
+Yes, `>=0.25`
 
 </td><td>
 
