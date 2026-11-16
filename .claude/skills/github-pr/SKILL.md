@@ -11,19 +11,6 @@ description: Write a GitHub pull request. Use whenever drafting, making, or edit
 - Do not restate exact changes, unless the PR happens to be very atomic.
 - When the right title is unclear, ask the user with 3-5 options.
 
-## Style
-
-- Wrap technical terms in backticks, both in commit subject and commit body.
-  Examples include: class names (e.g. `SomeClass`), CLI commands (`pip install -e .`),
-  variables (`MAX_RETRIES`)
-- Avoid GitHub short references, since beyond the GitHub UI,
-  they're plain text the reader has to look up.
-  Use complete GitHub URLs: `https://github.com/sirmalloc/ccstatusline/pull/430`
-  not `sirmalloc/ccstatusline#430` or `#430`.
-- When linking to code, prefer using version-pinned permalinks (Git tag or Git commit SHA)
-  with relevant lines, as links to branches can drift over time.
-  For example with GitHub, link to `v0.160.0` for tag v0.160.0 with `#L31` to link line 31.
-
 ## Body layout
 
 If the PR layout is not dictated by a GitHub Pull Request template, use this layout.
@@ -82,6 +69,10 @@ Where "(Provider) (Model)" can be entries like "Anthropic Claude Opus 5.5" or "O
 - Don't report verifications that Git hooks or CI checks pass,
   as these can become invalid after Git rebases, and live beyond the PR.
   For example, don't record "pre-commit passes" or "tests pass."
+
+## Style
+
+Follow the `technical-style` skill: load it if it isn't loaded yet.
 
 ## Process
 

@@ -11,19 +11,6 @@ description: Write Git commit message(s). Use whenever drafting, making, or amen
 - The diff shows what is changed, so don't list every edit.
   Though don't be afraid to use specifics.
 
-## Style
-
-- Wrap technical terms in backticks, both in commit subject and commit body.
-  Examples include: class names (e.g. `SomeClass`), CLI commands (`pip install -e .`),
-  variables (`MAX_RETRIES`)
-- Avoid GitHub short references, since beyond the GitHub UI,
-  they're plain text the reader has to look up.
-  Use complete GitHub URLs: `https://github.com/sirmalloc/ccstatusline/pull/430`
-  not `sirmalloc/ccstatusline#430` or `#430`.
-- When linking to code, prefer using version-pinned permalinks (Git tag or Git commit SHA)
-  with relevant lines, as links to branches can drift over time.
-  For example with GitHub, link to `v0.160.0` for tag v0.160.0 with `#L31` to link line 31.
-
 ## Body
 
 - The diff shows what is changed; the body is the place to record rationale
@@ -41,3 +28,7 @@ description: Write Git commit message(s). Use whenever drafting, making, or amen
 - Don't report verifications that Git hooks beyond the commit pass,
   as these can become invalid after Git rebases, and live beyond the commit.
   For example, don't record "pre-commit passes."
+
+## Style
+
+Follow the `technical-style` skill: load it if it isn't loaded yet.
