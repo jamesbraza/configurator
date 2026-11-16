@@ -30,8 +30,7 @@ This collapsed block avoids overwhelming PR reviewers with a wall of text.
 ```markdown
 1-3 sentences: what this PR is for.
 
-Optionally and when relevant, include an image (e.g. screenshot, diagram)
-epitomizing the change.
+Optionally and when relevant, include an image (e.g. screenshot, diagram) epitomizing the change.
 
 <details>
 <summary>(Provider) (Model)</summary>
@@ -72,7 +71,10 @@ Where "(Provider) (Model)" can be entries like "Anthropic Claude Opus 5.5" or "O
 
 ## Style
 
-Follow the `technical-style` skill: load it if it isn't loaded yet.
+- Follow the `technical-style` skill: load it if it isn't loaded yet.
+- Don't use semantic line feeds in PR body (e.g.paragraphs or list items),
+  as GitHub renders newlines as a line break,
+  leading to PR descriptions visually appearing as ragged lines.
 
 ## Process
 
