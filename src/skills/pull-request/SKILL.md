@@ -1,9 +1,9 @@
 ---
-name: github-pr
-description: Write a GitHub pull request. Use whenever drafting, making, or editing a PR body, title, or both.
+name: pull-request
+description: Write a pull request. Use whenever drafting, making, or editing a PR body, title, or both.
 ---
 
-# github-pr
+# pull-request
 
 ## Title
 
@@ -13,7 +13,7 @@ description: Write a GitHub pull request. Use whenever drafting, making, or edit
 
 ## Body layout
 
-If the PR layout is not dictated by a GitHub Pull Request template, use this layout.
+If the PR layout is not dictated by a repo template, use this layout.
 
 Open the PR body with a concise (1-3 sentence) summary in the user's voice,
 so reviewers can see a high-level explanation with the user's perspective.
@@ -51,7 +51,8 @@ Where "(Provider) (Model)" can be entries like "Anthropic Claude Opus 5.5" or "O
   as PR reviewers can click into individual commits or review diff separately.
   The PR body should holistically speak about all commits together. For intuition,
   think: after a squash-and-merge the PR body becomes a singular Git commit body.
-- Document rationale and events that the PR is addressing.
+- Document rationale, design decisions, assumptions, questions the user answered
+  during planning and development, and events that the PR is addressing.
   For example, if a code crash led to three Git commits in a bugfix PR,
   it's helpful to restate the stack trace in the PR description.
 - Log future work or unimplemented nice-to-haves, for example:
@@ -59,6 +60,7 @@ Where "(Provider) (Model)" can be entries like "Anthropic Claude Opus 5.5" or "O
 - Prefer encapsulated PRs; avoid talking about downstream PRs
   unless they are actively planned and being opened imminently.
 - To record an event, try to document relevant log lines, links, timestamps, versions,
+  related PRs/issues/discussions, CI or cloud logs (e.g. GitHub Actions, Google Cloud),
   and other noteworthy details.
   - Avoid leaking secrets when recording events.
   - Avoid Git SHAs on the current Git branch, as they will change with Git rebases.
@@ -68,18 +70,23 @@ Where "(Provider) (Model)" can be entries like "Anthropic Claude Opus 5.5" or "O
 - Don't report verifications that Git hooks or CI checks pass,
   as these can become invalid after Git rebases, and live beyond the PR.
   For example, don't record "pre-commit passes" or "tests pass."
+  - Similarly, if you'd like to include a test plan,
+    and it's just "have CI checks pass," don't include it.
 
 ## Style
 
-- Follow the `technical-style` skill: load it if it isn't loaded yet.
-- Don't use semantic line feeds in PR body (e.g.paragraphs or list items),
-  as GitHub renders newlines as a line break,
+- Follow the `technical-style` skill for both title and body.
+  Load it if it isn't loaded yet.
+- Don't use semantic line feeds in PR body (e.g. paragraphs or list items),
+  as hosts like GitHub render newlines as a line break,
   leading to PR descriptions visually appearing as ragged lines.
 
 ## Process
 
-- If we are opening the PR, assign the PR to me (e.g. `gh` CLI's `--assign @me`)
+- If we are opening the PR, assign the PR to me (e.g. for GitHub use `gh` CLI's `--assignee @me`).
 - Add a label. If the user describes the label (e.g. "label as a bug"),
   use the existing repo label matching that description.
-  Otherwise pick the best fit from `gh label list`.
+  Otherwise pick the best fit (e.g. for GitHub using `gh label list`).
   - Don't create a new label without asking.
+- If the repo host's CLI is unavailable or unauthenticated so a PR can't be opened,
+  instead print the PR title and body for the user.
