@@ -13,6 +13,12 @@
   },
   packageRules: [
     {
+      // TODO: remove after release of https://github.com/uqfoundation/dill/pull/755,
+      // as needed by pylint's parallel mode crashes on Python 3.15: https://github.com/pylint-dev/pylint/issues/11528
+      matchPackageNames: ["python"],
+      allowedVersions: "<3.15",
+    },
+    {
       // TODO: remove after https://github.com/jackdewinter/pymarkdown/issues/1751
       matchPackageNames: ["jackdewinter/pymarkdown"],
       allowedVersions: "<0.9.41",
