@@ -303,6 +303,24 @@ Yes
 `pre-commit` hook
 
 </td><td></td></tr>
+<tr><td>
+
+[`check-jsonschema`](https://github.com/python-jsonschema/check-jsonschema)
+([docs](https://check-jsonschema.readthedocs.io/en/stable/))
+
+</td><td>
+
+Yes
+
+</td><td>
+
+Validating files using externally-maintained JSON Schemas.
+
+</td><td>
+
+`pre-commit` hook
+
+</td><td></td></tr>
 </table>
 
 ### Markdown
@@ -920,7 +938,7 @@ Python environment and dependency management
 
 </td><td>
 
-Command line
+Command line, `pre-commit` hook
 
 </td><td></td></tr>
 <tr><td>
