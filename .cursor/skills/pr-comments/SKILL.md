@@ -17,7 +17,7 @@ If there is no plan mode, just present the plan and wait for approval before the
 3. For each change, determine if a new Git commit should be made
    or if the change should be amended into Git history.
    Also determine if the PR description should be updated.
-   - Follow the `git-commit` and `github-pr` skills. Load them if they aren't loaded yet.
+   - Follow the `git-commit` and `pull-request` skills. Load them if they aren't loaded yet.
 4. Plan a reply to each comment.
    - Don't include a Git commit SHA, just state rationale,
      as the SHA will change across Git rebases.

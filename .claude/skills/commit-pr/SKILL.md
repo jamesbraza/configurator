@@ -14,6 +14,6 @@ description: Stage, commit, push, and open a GitHub pull request for the current
    - If any untracked files look unrelated, list them and ask before staging them.
 4. Commit the changes across 1+ Git commits, splitting them into logical units.
    Follow the `git-commit` skill, loading it if it isn't loaded yet.
-5. Open the pull request following the `github-pr` skill.
+5. Open the pull request following the `pull-request` skill.
    Load it if it isn't loaded yet.
    Target the default branch unless the user specifies a different base branch.

@@ -1,9 +1,9 @@
 ---
-name: github-pr
+name: pull-request
 description: Write a GitHub pull request. Use whenever drafting, making, or editing a PR body, title, or both.
 ---
 
-# github-pr
+# pull-request
 
 ## Title
 
