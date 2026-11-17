@@ -71,6 +71,14 @@ repos:
     rev: 44.251.0
     hooks:
       - id: renovate-config-validator
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.39.0
+    hooks:
+      - id: check-github-workflows
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.13.9
+    hooks:
+      - id: uv-lock
   - repo: https://github.com/henryiii/validate-pyproject-schema-store
     rev: 2026.11.17
     hooks:
