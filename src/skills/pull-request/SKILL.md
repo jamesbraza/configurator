@@ -1,6 +1,6 @@
 ---
 name: pull-request
-description: Write a GitHub pull request. Use whenever drafting, making, or editing a PR body, title, or both.
+description: Write a pull request. Use whenever drafting, making, or editing a PR body, title, or both.
 ---
 
 # pull-request
@@ -13,7 +13,7 @@ description: Write a GitHub pull request. Use whenever drafting, making, or edit
 
 ## Body layout
 
-If the PR layout is not dictated by a GitHub Pull Request template, use this layout.
+If the PR layout is not dictated by a repo template, use this layout.
 
 Open the PR body with a concise (1-3 sentence) summary in the user's voice,
 so reviewers can see a high-level explanation with the user's perspective.
@@ -77,16 +77,16 @@ Where "(Provider) (Model)" can be entries like "Anthropic Claude Opus 5.5" or "O
 
 - Follow the `technical-style` skill for both title and body.
   Load it if it isn't loaded yet.
-- Don't use semantic line feeds in PR body (e.g.paragraphs or list items),
-  as GitHub renders newlines as a line break,
+- Don't use semantic line feeds in PR body (e.g. paragraphs or list items),
+  as hosts like GitHub render newlines as a line break,
   leading to PR descriptions visually appearing as ragged lines.
 
 ## Process
 
-- If we are opening the PR, assign the PR to me (e.g. `gh` CLI's `--assign @me`)
+- If we are opening the PR, assign the PR to me (e.g. for GitHub use `gh` CLI's `--assignee @me`).
 - Add a label. If the user describes the label (e.g. "label as a bug"),
   use the existing repo label matching that description.
-  Otherwise pick the best fit from `gh label list`.
+  Otherwise pick the best fit (e.g. for GitHub using `gh label list`).
   - Don't create a new label without asking.
-- If the `gh` CLI is unavailable or unauthenticated so a PR can't be opened,
+- If the repo host's CLI is unavailable or unauthenticated so a PR can't be opened,
   instead print the PR title and body for the user.

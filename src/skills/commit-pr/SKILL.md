@@ -1,6 +1,6 @@
 ---
 name: commit-pr
-description: Stage, commit, push, and open a GitHub pull request for the current work. Use when asked to commit and open a PR.
+description: Stage, commit, push, and open a pull request (PR) for the current work. Use when asked to commit and open a PR.
 ---
 
 # commit-pr
