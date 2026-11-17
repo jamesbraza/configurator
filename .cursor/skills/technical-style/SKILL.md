@@ -16,3 +16,5 @@ description: Style for technical writing related to code, namely best practices 
 - When linking to code, prefer using version-pinned permalinks (Git tag or Git commit SHA)
   with relevant lines, as links to branches can drift over time.
   For example with GitHub, link to `v0.160.0` for tag v0.160.0 with `#L31` to link line 31.
+- Always specify a code block's language
+  (e.g. in Markdown, put `python` for Python or `text` for plain text or logs).

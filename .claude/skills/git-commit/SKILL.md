@@ -31,4 +31,5 @@ description: Write Git commit message(s). Use whenever drafting, making, or amen
 
 ## Style
 
-Follow the `technical-style` skill: load it if it isn't loaded yet.
+Follow the `technical-style` skill for both subject and body.
+Load it if it isn't loaded yet.
