@@ -79,7 +79,6 @@ skip = [
 [tool.coverage.report]
 exclude_also = [
     "@overload",  # SEE: https://github.com/nedbat/coveragepy/issues/970
-    "if TYPE_CHECKING:",
 ]
 # Number of digits after the decimal point to display for reported coverage percentages
 precision = 2
