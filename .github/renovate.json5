@@ -13,6 +13,11 @@
   },
   packageRules: [
     {
+      // TODO: remove after https://github.com/jackdewinter/pymarkdown/issues/1751
+      matchPackageNames: ["jackdewinter/pymarkdown"],
+      allowedVersions: "<0.9.41",
+    },
+    {
       matchUpdateTypes: ["lockFileMaintenance"],
       automerge: true,
     },
