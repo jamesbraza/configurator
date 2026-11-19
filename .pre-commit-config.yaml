@@ -120,6 +120,17 @@ repos:
         language: system
         always_run: true
         pass_filenames: false
+      # TODO: remove along with the Makefile's skills-link target once
+      # https://github.com/runkids/skillshare/issues/964 is resolved
+      - id: skills-link
+        name: skills-link
+        description: >-
+          Link each src/skills/ skill into the global skillshare source,
+          so other repos' Claude Code sessions see plain names like git-commit.
+        entry: make skills-link
+        language: system
+        always_run: true
+        pass_filenames: false
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v2.4.1
     hooks:
